@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://crxhvmr5p37e5"]
+
+[ext_resource type="Script" path="res://marsslingshot2.0/slingshot/space_ship.gd" id="1_omm6k"]
+[ext_resource type="Texture2D" uid="uid://dmitpk0danggl" path="res://marsslingshot2.0/assets/psyche shuttle.png" id="2_xkteb"]
+[ext_resource type="Script" path="res://marsslingshot2.0/slingshot/timer.gd" id="3_qk4u3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1qdcw"]
+radius = 12.0
+
+[node name="space_ship" type="CharacterBody2D"]
+script = ExtResource("1_omm6k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.033476, 0.22076)
+rotation = 1.5708
+scale = Vector2(0.02, 0.015)
+texture = ExtResource("2_xkteb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.8147e-06, 0)
+shape = SubResource("CircleShape2D_1qdcw")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+script = ExtResource("3_qk4u3")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

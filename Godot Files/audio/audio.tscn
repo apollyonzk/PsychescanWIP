@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1bu06s83i25f"]
+
+[ext_resource type="Script" path="res://audio/audio.gd" id="1_01fjg"]
+[ext_resource type="AudioStream" uid="uid://dk06day7cv80q" path="res://audio/tone.wav" id="2_i5goc"]
+[ext_resource type="AudioStream" uid="uid://cuvjyvppqrn0q" path="res://audio/open.mp3" id="2_sw5km"]
+[ext_resource type="AudioStream" uid="uid://bu37hmpwdvu4n" path="res://audio/dialogue.mp3" id="3_yifkf"]
+[ext_resource type="AudioStream" uid="uid://cqwf18jcknar6" path="res://audio/doors.mp3" id="5_pj3rx"]
+[ext_resource type="AudioStream" uid="uid://2gtagbm7syv5" path="res://audio/steps.mp3" id="6_ek5jo"]
+[ext_resource type="AudioStream" uid="uid://c2v75qa38gtkx" path="res://audio/correct.mp3" id="7_md3rs"]
+[ext_resource type="AudioStream" uid="uid://dathja5b2a5xa" path="res://audio/incorrect.wav" id="8_752ja"]
+
+[node name="Audio" type="AudioStreamPlayer"]
+script = ExtResource("1_01fjg")
+
+[node name="sfx_close" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_i5goc")
+max_distance = 100000.0
+
+[node name="sfx_open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_sw5km")
+max_distance = 100000.0
+
+[node name="sfx_dialogue" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yifkf")
+volume_db = -15.0
+max_distance = 100000.0
+
+[node name="sfx_doors" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_pj3rx")
+max_distance = 1e+06
+
+[node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ek5jo")
+max_distance = 100000.0
+
+[node name="sfx_correct" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_md3rs")
+volume_db = -5.0
+max_distance = 100000.0
+
+[node name="sfx_incorrect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_752ja")
+volume_db = 24.0
+max_distance = 100000.0

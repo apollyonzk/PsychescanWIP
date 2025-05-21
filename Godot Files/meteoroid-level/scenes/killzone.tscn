@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckqhj1j1mjc3v"]
+
+[ext_resource type="Script" path="res://meteoroid-level/scripts/killzone.gd" id="1_y4oq0"]
+
+[node name="Killzone" type="Area2D"]
+script = ExtResource("1_y4oq0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

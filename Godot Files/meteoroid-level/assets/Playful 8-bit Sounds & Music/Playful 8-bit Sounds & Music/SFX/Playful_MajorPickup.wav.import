@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkbskojgj2bph"
+path="res://.godot/imported/Playful_MajorPickup.wav-793725468795845764d432fb4a92b4a9.sample"
+
+[deps]
+
+source_file="res://meteoroid-level/assets/Playful 8-bit Sounds & Music/Playful 8-bit Sounds & Music/SFX/Playful_MajorPickup.wav"
+dest_files=["res://.godot/imported/Playful_MajorPickup.wav-793725468795845764d432fb4a92b4a9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

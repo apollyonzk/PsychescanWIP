@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcqh1k32covhr"]
+
+[ext_resource type="PackedScene" uid="uid://d2k4nx07esqql" path="res://psychescan/sprites/asteroid3.tscn" id="1_2ljbq"]
+[ext_resource type="Shader" path="res://psychescan/addons/CRTVisual.gdshader" id="2_v7qx5"]
+[ext_resource type="PackedScene" uid="uid://cosc37m3bowe8" path="res://psychescan/backgrounds/background3.tscn" id="3_5tj0h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fd7os"]
+shader = ExtResource("2_v7qx5")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 25.0
+shader_parameter/roll_variation = 0.581
+shader_parameter/distort_intensity = 0.0
+shader_parameter/aberration = 4.75e-08
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7bw3"]
+size = Vector2(20, 1459.74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u57ik"]
+size = Vector2(1665.86, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3htlh"]
+size = Vector2(20, 1459.86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgvac"]
+size = Vector2(1663.79, 20)
+
+[node name="level" type="Node2D"]
+scale = Vector2(1.268, 1.268)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_2ljbq")]
+position = Vector2(277.603, 201.893)
+scale = Vector2(0.9, 0.9)
+collision_layer = 1
+collision_mask = 1
+
+[node name="CRTShader" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_fd7os")
+position = Vector2(-281.664, -46.3898)
+scale = Vector2(2.84442, 2.27598)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(150, 135, 159, 112, 183, 98, 546, 98, 570, 114, 587, 145, 587, 437, 577, 461, 563, 475, 186, 475, 167, 454, 153, 423)
+
+[node name="background" parent="." instance=ExtResource("3_5tj0h")]
+scale = Vector2(1.268, 1.268)
+
+[node name="CameraBounds1" type="StaticBody2D" parent="."]
+scale = Vector2(1.268, 1.268)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds1"]
+position = Vector2(-358.248, 447.81)
+scale = Vector2(1.268, 1.268)
+shape = SubResource("RectangleShape2D_o7bw3")
+
+[node name="CameraBounds2" type="StaticBody2D" parent="."]
+scale = Vector2(1.268, 1.268)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraBounds2"]
+position = Vector2(716.496, -477.664)
+scale = Vector2(1.268, 1.268)
+shape = SubResource("RectangleShape2D_u57ik")
+
+[node name="CameraBounds3" type="StaticBody2D" parent="."]
+scale = Vector2(1.268, 1.268)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CameraBounds3"]
+position = Vector2(1751.44, 447.887)
+scale = Vector2(1.268, 1.268)
+shape = SubResource("RectangleShape2D_3htlh")
+
+[node name="CameraBounds4" type="StaticBody2D" parent="."]
+scale = Vector2(1.268, 1.268)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="CameraBounds4"]
+position = Vector2(696.594, 1353.38)
+scale = Vector2(1.268, 1.268)
+shape = SubResource("RectangleShape2D_jgvac")

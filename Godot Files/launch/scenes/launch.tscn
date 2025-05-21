@@ -1,0 +1,166 @@
+[gd_scene load_steps=11 format=3 uid="uid://0khslqnv23uc"]
+
+[ext_resource type="Script" path="res://launch/scripts/launch.gd" id="1_va7d6"]
+[ext_resource type="Texture2D" uid="uid://bli4mr52eoyb4" path="res://Globals/consoleBackgroundLarge.png" id="2_ovh8h"]
+[ext_resource type="FontFile" uid="uid://j00rrwigmjoe" path="res://fonts/dogicapixel.ttf" id="3_0stjb"]
+[ext_resource type="PackedScene" uid="uid://dtwuq3lpsye6x" path="res://Globals/crt_shader_global.tscn" id="4_btfnl"]
+
+[sub_resource type="Animation" id="Animation_8phch"]
+resource_name = "flash_wrong"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wrong:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.309804), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0veth"]
+_data = {
+"flash_wrong": SubResource("Animation_8phch")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1cd7"]
+size = Vector2(59, 259)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc1ue"]
+size = Vector2(59, 415)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqa7l"]
+size = Vector2(59, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfl8n"]
+size = Vector2(59, 24)
+
+[node name="Launch" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_va7d6")
+
+[node name="ConsoleBackgroundLarge" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(1495.5, 943.5)
+texture = ExtResource("2_ovh8h")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+z_index = 102
+position = Vector2(1398.5, 871.5)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_top = 247.0
+offset_right = 1920.0
+offset_bottom = 1332.0
+scale = Vector2(1.1, 1.1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0veth")
+}
+
+[node name="Meter" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 359.0
+offset_top = 409.0
+offset_right = 418.0
+offset_bottom = 1243.0
+
+[node name="RedArea" type="Area2D" parent="Meter"]
+
+[node name="RedColor" type="ColorRect" parent="Meter/RedArea"]
+offset_right = 59.0
+offset_bottom = 834.0
+color = Color(1, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Top" type="CollisionShape2D" parent="Meter/RedArea"]
+position = Vector2(29.5, 129.5)
+shape = SubResource("RectangleShape2D_j1cd7")
+
+[node name="Bottom" type="CollisionShape2D" parent="Meter/RedArea"]
+position = Vector2(29.5, 626.5)
+shape = SubResource("RectangleShape2D_nc1ue")
+
+[node name="GreenArea" type="Area2D" parent="Meter"]
+position = Vector2(0, 259)
+
+[node name="GreenColor" type="ColorRect" parent="Meter/GreenArea"]
+offset_right = 59.0
+offset_bottom = 160.0
+color = Color(0, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Meter/GreenArea"]
+position = Vector2(29.5, 80)
+shape = SubResource("RectangleShape2D_pqa7l")
+
+[node name="LineArea" type="Area2D" parent="Meter"]
+position = Vector2(0, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Meter/LineArea"]
+position = Vector2(29.5, 12)
+shape = SubResource("RectangleShape2D_mfl8n")
+
+[node name="Line" type="ColorRect" parent="Meter/LineArea"]
+offset_right = 59.0
+offset_bottom = 24.0
+color = Color(0, 0, 0, 1)
+
+[node name="Instructions" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 2021.0
+offset_top = 242.0
+offset_right = 2520.0
+offset_bottom = 1069.0
+
+[node name="Top" type="Label" parent="Instructions"]
+z_index = 100
+layout_mode = 0
+offset_right = 502.0
+offset_bottom = 364.0
+theme_override_constants/line_spacing = 16
+theme_override_fonts/font = ExtResource("3_0stjb")
+theme_override_font_sizes/font_size = 48
+text = "Controls: 
+[Enter] 
+[Space] "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Bottom" type="Label" parent="Instructions"]
+z_index = 100
+layout_mode = 0
+offset_left = -2.0
+offset_top = 466.0
+offset_right = 507.0
+offset_bottom = 827.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 16
+theme_override_fonts/font = ExtResource("3_0stjb")
+theme_override_font_sizes/font_size = 48
+text = "Launch the rocket when the black line is in the green area"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Wrong" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 232.0
+offset_right = 1893.0
+offset_bottom = 1446.0
+color = Color(1, 0, 0, 0)
+
+[node name="CRTShader" parent="." instance=ExtResource("4_btfnl")]
+position = Vector2(-438.776, -136.833)
+scale = Vector2(4.02517, 3.35544)
+
+[connection signal="dialogue_end" from="." to="." method="_on_dialogue_end"]
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="area_entered" from="Meter/RedArea" to="." method="_on_red_area_area_entered"]
+[connection signal="area_entered" from="Meter/GreenArea" to="." method="_on_green_area_area_entered"]

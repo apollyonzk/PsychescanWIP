@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2k4nx07esqql"]
+
+[ext_resource type="Script" path="res://psychescan/scripts/PlayerAsteroid.gd" id="1_y564n"]
+[ext_resource type="Shader" path="res://psychescan/addons/StarScroll.gdshader" id="2_dorg4"]
+[ext_resource type="PackedScene" uid="uid://dipu66gwaj7se" path="res://psychescan/sprites/sparkle.tscn" id="2_fsjjn"]
+[ext_resource type="Texture2D" uid="uid://dqnw2vpndho8c" path="res://psychescan/assets/textures/meteoroid-level-border-background.png" id="3_6po1f"]
+[ext_resource type="Texture2D" uid="uid://bl3w3h46m647u" path="res://psychescan/assets/textures/psyche3.png" id="4_1vnma"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lotf5"]
+shader = ExtResource("2_dorg4")
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6q4w"]
+size = Vector2(1376, 1344)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nddq"]
+size = Vector2(320, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1gh0"]
+size = Vector2(256, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3eek"]
+size = Vector2(80, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykous"]
+size = Vector2(96, 96)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_y564n")
+
+[node name="StarBackground" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_lotf5")
+position = Vector2(686, 671)
+scale = Vector2(4.74709, 5.56027)
+texture = ExtResource("3_6po1f")
+region_enabled = true
+region_rect = Rect2(0, 0, 737.375, 433.688)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(688, 672)
+shape = SubResource("RectangleShape2D_v6q4w")
+
+[node name="TextureShape" type="Polygon2D" parent="."]
+position = Vector2(125.772, 0)
+scale = Vector2(1.96286, 2.1)
+color = Color(0.957552, 0.313468, 1, 1)
+texture = ExtResource("4_1vnma")
+texture_offset = Vector2(64, 2)
+texture_scale = Vector2(1.45, 1.43)
+polygon = PackedVector2Array(0, 0, -64, 0, -64, 579.518, -64, 640, 640, 640, 640, 578.621, 640, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="ProxDetector" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(512, 160)
+shape = SubResource("RectangleShape2D_7nddq")
+debug_color = Color(2.83971e-06, 0.643109, 0.305986, 0.42)
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="ProxDetector" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(1184, 864)
+shape = SubResource("RectangleShape2D_7nddq")
+debug_color = Color(2.83971e-06, 0.643109, 0.305986, 0.42)
+
+[node name="Area2D3" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="ProxDetector" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(96, 544)
+shape = SubResource("RectangleShape2D_c1gh0")
+debug_color = Color(3.7542e-06, 0.644514, 0.279388, 0.42)
+
+[node name="hitbox" type="CharacterBody2D" parent="." groups=["player_boxes"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="hitbox" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1184, 864)
+shape = SubResource("RectangleShape2D_y3eek")
+
+[node name="AnimatedSprite2D" parent="hitbox" instance=ExtResource("2_fsjjn")]
+position = Vector2(1184, 864)
+scale = Vector2(0.673685, 0.864864)
+
+[node name="hitbox2" type="CharacterBody2D" parent="." groups=["player_boxes"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="hitbox" type="CollisionShape2D" parent="hitbox2"]
+position = Vector2(512, 160)
+shape = SubResource("RectangleShape2D_y3eek")
+
+[node name="AnimatedSprite2D" parent="hitbox2" instance=ExtResource("2_fsjjn")]
+position = Vector2(512, 160)
+
+[node name="hitbox3" type="CharacterBody2D" parent="." groups=["player_boxes"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="hitbox" type="CollisionShape2D" parent="hitbox3"]
+position = Vector2(96, 544)
+shape = SubResource("RectangleShape2D_ykous")
+
+[node name="AnimatedSprite2D" parent="hitbox3" instance=ExtResource("2_fsjjn")]
+position = Vector2(96, 544)

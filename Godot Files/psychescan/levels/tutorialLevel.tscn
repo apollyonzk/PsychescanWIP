@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn7vq2upimlf3"]
+
+[ext_resource type="PackedScene" uid="uid://fdj4n1xw0w83" path="res://psychescan/sprites/asteroid1.tscn" id="1_2j55q"]
+[ext_resource type="Shader" path="res://psychescan/addons/CRTVisual.gdshader" id="2_0vqjm"]
+[ext_resource type="PackedScene" uid="uid://c641vkv3xk5kr" path="res://psychescan/backgrounds/tutorialBackground.tscn" id="2_38ku3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0g6w5"]
+shader = ExtResource("2_0vqjm")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 25.0
+shader_parameter/roll_variation = 0.581
+shader_parameter/distort_intensity = 0.0
+shader_parameter/aberration = 4.75e-08
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="level" type="Node2D"]
+scale = Vector2(1.268, 1.268)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_2j55q")]
+position = Vector2(277.603, 201.893)
+scale = Vector2(0.85, 0.856)
+script = null
+
+[node name="CRTShader" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_0g6w5")
+position = Vector2(-281.664, -46.3898)
+scale = Vector2(2.84442, 2.27598)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(150, 135, 159, 112, 183, 98, 546, 98, 570, 114, 587, 145, 587, 437, 577, 461, 563, 475, 186, 475, 167, 454, 153, 423)
+
+[node name="background" parent="." instance=ExtResource("2_38ku3")]
+scale = Vector2(1.268, 1.268)

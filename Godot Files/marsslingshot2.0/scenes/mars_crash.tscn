@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsadpfbtx8lyt"]
+
+[ext_resource type="Script" path="res://marsslingshot2.0/script/mars_crash.gd" id="1_m457p"]
+
+[node name="MarsCrash" type="Node2D"]
+script = ExtResource("1_m457p")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 462.0
+offset_top = 263.0
+offset_right = 669.0
+offset_bottom = 401.0
+text = "You got too close to mars and can't escape its orbit. Try Again"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

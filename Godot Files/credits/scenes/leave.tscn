@@ -1,0 +1,402 @@
+[gd_scene load_steps=45 format=3 uid="uid://g5npr154t7rx"]
+
+[ext_resource type="Script" path="res://credits/scripts/leave.gd" id="1_beens"]
+[ext_resource type="PackedScene" uid="uid://17wx3jdqs3le" path="res://scavenger-hunt/scenes/room1.tscn" id="2_qjlhv"]
+[ext_resource type="Texture2D" uid="uid://ja5og8u6khm4" path="res://scavenger-hunt/assets/doors/glass/two-0.png" id="3_fb2uw"]
+[ext_resource type="Texture2D" uid="uid://btsbm4tgkq3d3" path="res://scavenger-hunt/assets/doors/glass/two-1.png" id="4_jgqn5"]
+[ext_resource type="Texture2D" uid="uid://bqw4tl5r0dmty" path="res://scavenger-hunt/assets/doors/glass/two-3.png" id="5_fbpln"]
+[ext_resource type="PackedScene" uid="uid://ciwfs2g02077f" path="res://scavenger-hunt/scenes/room4.tscn" id="5_i3w65"]
+[ext_resource type="Texture2D" uid="uid://dv6f4xk0mhl6w" path="res://scavenger-hunt/assets/doors/glass/two-4.png" id="6_go83u"]
+[ext_resource type="PackedScene" uid="uid://d1bu06s83i25f" path="res://audio/audio.tscn" id="6_qmsg2"]
+[ext_resource type="Texture2D" uid="uid://difuv1chgps3k" path="res://scavenger-hunt/assets/doors/glass/two-5.png" id="7_ikvum"]
+[ext_resource type="Texture2D" uid="uid://cs1xe0wi6wst2" path="res://scavenger-hunt/assets/doors/wood/door-5.png" id="8_im26n"]
+[ext_resource type="Texture2D" uid="uid://brlxbsovtqpeg" path="res://scavenger-hunt/assets/doors/wood/door-4.png" id="9_job4j"]
+[ext_resource type="Texture2D" uid="uid://c8rara0m14prn" path="res://scavenger-hunt/assets/doors/wood/door-3.png" id="10_uygfr"]
+[ext_resource type="Texture2D" uid="uid://bl137g4ij8x1g" path="res://scavenger-hunt/assets/doors/wood/door-2.png" id="11_351eg"]
+[ext_resource type="Texture2D" uid="uid://cdbh06tixl85t" path="res://scavenger-hunt/assets/doors/wood/door-1.png" id="12_7o4is"]
+[ext_resource type="PackedScene" uid="uid://byo5jn1nt53yv" path="res://scavenger-hunt/scenes/player.tscn" id="14_w25pw"]
+[ext_resource type="Texture2D" uid="uid://bqspm0vurfwop" path="res://scavenger-hunt/assets/room4/chair.png" id="15_uigw0"]
+[ext_resource type="Texture2D" uid="uid://b35nwgw3rd8pi" path="res://scavenger-hunt/assets/doors/armor/armor-1.png" id="16_petqe"]
+[ext_resource type="Texture2D" uid="uid://cn6fej53ol1o2" path="res://scavenger-hunt/assets/doors/armor/armor-2.png" id="17_uupi1"]
+[ext_resource type="Texture2D" uid="uid://d3km1m1sod26d" path="res://scavenger-hunt/assets/doors/armor/armor-3.png" id="18_ijdw8"]
+[ext_resource type="Texture2D" uid="uid://dmbdfbgx3fm2o" path="res://scavenger-hunt/assets/doors/armor/armor-4.png" id="19_6ae61"]
+[ext_resource type="Texture2D" uid="uid://bw3iubb5t0ajj" path="res://scavenger-hunt/assets/doors/armor/armor-5.png" id="20_iefqn"]
+[ext_resource type="Texture2D" uid="uid://cc4s1gbnd208s" path="res://scavenger-hunt/assets/doors/armor/armor-6.png" id="21_gu3xs"]
+[ext_resource type="PackedScene" uid="uid://b18d830urpadj" path="res://scavenger-hunt/scenes/room3.tscn" id="22_8wsrk"]
+[ext_resource type="PackedScene" uid="uid://cmvmiwx70f2yw" path="res://sign-off/scenes/sign-off.tscn" id="24_6h2up"]
+[ext_resource type="PackedScene" uid="uid://bqimdocoobe63" path="res://credits/scenes/credits.tscn" id="25_g7syq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mp6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fb2uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jgqn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fbpln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_go83u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ikvum")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ikvum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_go83u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fbpln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jgqn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fb2uw")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_420qf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_im26n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_job4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uygfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_351eg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7o4is")
+}],
+"loop": false,
+"name": &"close",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_7o4is")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_351eg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uygfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_job4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_im26n")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_6evnr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 190.006, -246, 0, 0, 0, 0, 190.006, 0.085144, 0, 0, 0, 0, 36.8116, 1.83337)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_ct0lt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 35.8334, 0, 0, 0, 0, 0, -21.3333, 2.5, 0, 0, 0, 0, -24.3333, 426.5)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_3lywb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -30, -149, 0, 0, 0, 0, -30, -130, 0, 0, 0, 0, 5, -130, 0, 0, 0, 0, -2.5, 0, 0, 0, 0, 0, -1, 156)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_p1id7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20)
+}
+point_count = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfhmo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_petqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uupi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ijdw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_6ae61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_iefqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_gu3xs")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_8boom"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_wwibw"]
+resource_name = "cover"
+
+[sub_resource type="Animation" id="Animation_hgyf6"]
+resource_name = "room1_cover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Room1Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_unc06"]
+resource_name = "room1_cover_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Room1Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ug8fn"]
+resource_name = "room2_cover"
+
+[sub_resource type="Animation" id="Animation_gwb5y"]
+resource_name = "room2_cover_fade"
+
+[sub_resource type="Animation" id="Animation_caml7"]
+resource_name = "room3_cover"
+
+[sub_resource type="Animation" id="Animation_dyd56"]
+resource_name = "room3_cover_fade"
+
+[sub_resource type="Animation" id="Animation_gvg2b"]
+resource_name = "room4_cover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Room4Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0negj"]
+resource_name = "room4_cover_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Room4Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j0nex"]
+_data = {
+"RESET": SubResource("Animation_8boom"),
+"cover": SubResource("Animation_wwibw"),
+"room1_cover": SubResource("Animation_hgyf6"),
+"room1_cover_fade": SubResource("Animation_unc06"),
+"room2_cover": SubResource("Animation_ug8fn"),
+"room2_cover_fade": SubResource("Animation_gwb5y"),
+"room3_cover": SubResource("Animation_caml7"),
+"room3_cover_fade": SubResource("Animation_dyd56"),
+"room4_cover": SubResource("Animation_gvg2b"),
+"room4_cover_fade": SubResource("Animation_0negj")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_dhplc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 4522, 431, 0, 0, 0, 0, 4346, 742)
+}
+point_count = 2
+
+[node name="Leave" type="Node2D"]
+script = ExtResource("1_beens")
+
+[node name="Room1" parent="." instance=ExtResource("2_qjlhv")]
+
+[node name="LeaveRoom1Door" type="AnimatedSprite2D" parent="Room1"]
+position = Vector2(911.999, 1080)
+sprite_frames = SubResource("SpriteFrames_4mp6c")
+animation = &"open"
+
+[node name="EnterRoom1Door" type="AnimatedSprite2D" parent="Room1"]
+position = Vector2(1128, 609)
+sprite_frames = SubResource("SpriteFrames_420qf")
+animation = &"open"
+
+[node name="Room1Camera" type="Camera2D" parent="Room1"]
+position = Vector2(516.834, 576)
+anchor_mode = 0
+zoom = Vector2(0.58, 0.58)
+
+[node name="EnterRoom1" type="Path2D" parent="Room1"]
+position = Vector2(932.667, 738)
+scale = Vector2(1.03681, 1)
+curve = SubResource("Curve2D_6evnr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Room1/EnterRoom1"]
+position = Vector2(190.006, -246)
+rotation = 0.000448112
+rotates = false
+loop = false
+
+[node name="Player" parent="Room1/EnterRoom1/PathFollow2D" instance=ExtResource("14_w25pw")]
+position = Vector2(-1.52588e-05, 3.8147e-06)
+scale = Vector2(1.5, 1.5)
+
+[node name="LeaveRoom1" type="Path2D" parent="Room1"]
+position = Vector2(936, 738)
+curve = SubResource("Curve2D_ct0lt")
+metadata/_edit_group_ = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Room1/LeaveRoom1"]
+position = Vector2(35.8334, 0)
+rotates = false
+loop = false
+
+[node name="Player" parent="Room1/LeaveRoom1/PathFollow2D" instance=ExtResource("14_w25pw")]
+scale = Vector2(1.5, 1.5)
+
+[node name="Room3" parent="." instance=ExtResource("22_8wsrk")]
+
+[node name="Room4" parent="." instance=ExtResource("5_i3w65")]
+
+[node name="LeaveRoom4" type="Path2D" parent="Room4"]
+position = Vector2(2287, 404)
+curve = SubResource("Curve2D_3lywb")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Room4/LeaveRoom4"]
+position = Vector2(-30, -149)
+rotates = false
+loop = false
+
+[node name="Player" parent="Room4/LeaveRoom4/PathFollow2D" instance=ExtResource("14_w25pw")]
+scale = Vector2(1.2, 1.2)
+
+[node name="MoveChair" type="Path2D" parent="Room4"]
+position = Vector2(2257, 271)
+curve = SubResource("Curve2D_p1id7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Room4/MoveChair"]
+rotates = false
+loop = false
+
+[node name="Chair" type="Sprite2D" parent="Room4/MoveChair/PathFollow2D"]
+scale = Vector2(0.722, 0.722)
+texture = ExtResource("15_uigw0")
+
+[node name="LeaveRoom4Door" type="AnimatedSprite2D" parent="Room4"]
+position = Vector2(2280, 466.5)
+sprite_frames = SubResource("SpriteFrames_nfhmo")
+animation = &"open"
+
+[node name="Room1Cover" type="ColorRect" parent="."]
+visible = false
+offset_left = 3009.0
+offset_top = 3351.0
+offset_right = 7966.0
+offset_bottom = 7298.0
+color = Color(0, 0, 0, 0)
+
+[node name="Room3Cover" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 11368.0
+offset_top = 2629.0
+offset_right = 14926.0
+offset_bottom = 4740.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Room4Cover" type="ColorRect" parent="."]
+visible = false
+offset_left = 11725.0
+offset_top = 528.0
+offset_right = 15096.0
+offset_bottom = 2652.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j0nex")
+}
+
+[node name="Audio" parent="." instance=ExtResource("6_qmsg2")]
+
+[node name="ZoomOut" type="Path2D" parent="."]
+position = Vector2(9018, 871)
+curve = SubResource("Curve2D_dhplc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ZoomOut"]
+position = Vector2(4522, 431)
+rotates = false
+loop = false
+
+[node name="ZoomingCamera" type="Camera2D" parent="ZoomOut/PathFollow2D"]
+position = Vector2(34.9999, 7)
+zoom = Vector2(8, 8)
+
+[node name="SignOff" parent="." instance=ExtResource("24_6h2up")]
+position = Vector2(-6959, -267)
+
+[node name="Credits" parent="." instance=ExtResource("25_g7syq")]
+
+[connection signal="begin" from="." to="SignOff" method="_on_leave_begin"]
+[connection signal="sign_off_done" from="SignOff" to="." method="_on_sign_off_sign_off_done"]
+[connection signal="done" from="Credits" to="." method="_on_credits_done"]

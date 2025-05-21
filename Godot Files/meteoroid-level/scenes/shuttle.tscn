@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmvpevcgrtlss"]
+
+[ext_resource type="Shader" path="res://meteoroid-level/scripts/shuttle.gdshader" id="1_04it3"]
+[ext_resource type="Script" path="res://meteoroid-level/scripts/shuttle.gd" id="1_r5ds6"]
+[ext_resource type="Texture2D" uid="uid://cauitf2on2quq" path="res://meteoroid-level/assets/psyche shuttle.png" id="2_283mx"]
+[ext_resource type="AudioStream" uid="uid://cb0l0qkguxtlp" path="res://meteoroid-level/assets/propulsion sound.wav" id="3_qpmuf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_07hft"]
+shader = ExtResource("1_04it3")
+shader_parameter/border_threshold = Vector2(0.01, 0.01)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpnbo"]
+atlas = ExtResource("2_283mx")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kixk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpnbo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gxfc"]
+radius = 9.0
+height = 38.0
+
+[node name="Shuttle" type="CharacterBody2D"]
+visibility_layer = 2
+collision_layer = 2
+script = ExtResource("1_r5ds6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_07hft")
+position = Vector2(4, 2)
+scale = Vector2(0.075, 0.075)
+sprite_frames = SubResource("SpriteFrames_kixk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0gxfc")
+
+[node name="MovementSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qpmuf")

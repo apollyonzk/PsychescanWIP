@@ -1,0 +1,110 @@
+[gd_scene load_steps=23 format=3 uid="uid://drin5td47d3wd"]
+
+[ext_resource type="Script" path="res://Globals/globals.gd" id="1_pgthe"]
+[ext_resource type="FontFile" uid="uid://j00rrwigmjoe" path="res://fonts/dogicapixel.ttf" id="2_iijrl"]
+[ext_resource type="Texture2D" uid="uid://bvy4vv25jutvv" path="res://audio/unmute.png" id="3_pmbk7"]
+[ext_resource type="Texture2D" uid="uid://cpf6qb5o0cd8v" path="res://audio/mute.png" id="4_hilxj"]
+[ext_resource type="Texture2D" uid="uid://c3i8i0vdoflyq" path="res://Globals/hint - Copy.png" id="5_bqtne"]
+[ext_resource type="Texture2D" uid="uid://dy5v8o3ryhyq0" path="res://Globals/hint.png" id="6_p5kis"]
+[ext_resource type="PackedScene" uid="uid://hof03kvnlrvg" path="res://Globals/hints/mars_hints.tscn" id="7_ubqha"]
+[ext_resource type="PackedScene" uid="uid://dw8yhp5ip2df3" path="res://Globals/hints/escape_room_hints.tscn" id="8_02mfg"]
+[ext_resource type="PackedScene" uid="uid://ct31xpc2kdfld" path="res://Globals/hints/meteoroid_hints.tscn" id="9_fudqv"]
+[ext_resource type="PackedScene" uid="uid://btjrcwxm0c6pn" path="res://Globals/hints/scan_hints.tscn" id="10_opac7"]
+[ext_resource type="PackedScene" uid="uid://bsfjo6itoivhc" path="res://Globals/hints/launch_hints.tscn" id="11_uagh7"]
+[ext_resource type="PackedScene" uid="uid://nf2qhh40pq8x" path="res://Globals/hints/typing_hints.tscn" id="12_so2hn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twjhg"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uks3w"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0w5nf"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tq1m4"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnqoh"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rn8j5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hv46"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsr5l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mgtiw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4u8rv"]
+
+[node name="Globals" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_pgthe")
+
+[node name="Mute" type="CheckBox" parent="."]
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 35.0
+offset_bottom = 32.0
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("2_iijrl")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_twjhg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_uks3w")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0w5nf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tq1m4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vnqoh")
+theme_override_icons/checked = ExtResource("4_hilxj")
+theme_override_icons/unchecked = ExtResource("3_pmbk7")
+
+[node name="Hint" type="CheckBox" parent="."]
+visible = false
+offset_left = 2681.0
+offset_top = 2.0
+offset_right = 2702.0
+offset_bottom = 31.0
+scale = Vector2(4, 4)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rn8j5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_0hv46")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wsr5l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mgtiw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4u8rv")
+theme_override_icons/checked = ExtResource("5_bqtne")
+theme_override_icons/unchecked = ExtResource("6_p5kis")
+
+[node name="MarsHints" parent="." instance=ExtResource("7_ubqha")]
+visible = false
+
+[node name="EscapeRoomHints" parent="." instance=ExtResource("8_02mfg")]
+visible = false
+
+[node name="MeteoroidHints" parent="." instance=ExtResource("9_fudqv")]
+visible = false
+
+[node name="ScanHints" parent="." instance=ExtResource("10_opac7")]
+visible = false
+
+[node name="LaunchHints" parent="." instance=ExtResource("11_uagh7")]
+visible = false
+
+[node name="TypingHints" parent="." instance=ExtResource("12_so2hn")]
+visible = false
+
+[connection signal="toggled" from="Mute" to="." method="_on_mute_toggled"]
+[connection signal="toggled" from="Hint" to="." method="_on_check_box_toggled"]

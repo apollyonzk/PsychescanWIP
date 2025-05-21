@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://c641vkv3xk5kr"]
+
+[ext_resource type="Texture2D" uid="uid://d3i5uhv7cwp4o" path="res://Globals/consoleBackgroundLarge.png" id="1_qjfe8"]
+[ext_resource type="Script" path="res://psychescan/scripts/Tutorial_To_Next_Level.gd" id="2_fy18e"]
+[ext_resource type="PackedScene" uid="uid://db3wqf71m7ltl" path="res://psychescan/texts/tutorialText.tscn" id="2_hkxe4"]
+[ext_resource type="Texture2D" uid="uid://c2vquuvgf0nmi" path="res://psychescan/assets/textures/squareReticle.png" id="3_fba8r"]
+[ext_resource type="AudioStream" uid="uid://bxxmw3llwoi57" path="res://psychescan/assets/audio/correct.wav" id="5_15ndt"]
+[ext_resource type="AudioStream" uid="uid://jv6cejdoyqie" path="res://psychescan/assets/audio/CRTHum.mp3" id="6_4qhsd"]
+[ext_resource type="Texture2D" uid="uid://bduslsougetkd" path="res://psychescan/assets/textures/green light.png" id="7_6vvia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc7cd"]
+size = Vector2(80, 80)
+
+[node name="background" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="main" type="Polygon2D" parent="."]
+scale = Vector2(1.55089, 2.10742)
+texture = ExtResource("1_qjfe8")
+texture_scale = Vector2(2.67, 3.7)
+polygon = PackedVector2Array(0, 0, 0, 0, 1120, 0, 1120, 512, 0, 512)
+
+[node name="hitbox1" type="Area2D" parent="."]
+position = Vector2(524, 427)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_fy18e")
+
+[node name="reticleHitbox" type="CollisionShape2D" parent="hitbox1"]
+position = Vector2(96, 32)
+shape = SubResource("RectangleShape2D_yc7cd")
+
+[node name="reticle" type="Polygon2D" parent="hitbox1"]
+position = Vector2(-51, 7)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_fba8r")
+texture_offset = Vector2(-42, 7)
+texture_scale = Vector2(15, 15)
+polygon = PackedVector2Array(43, -6, 75, -6, 75, 26, 43, 26)
+
+[node name="Label" parent="." instance=ExtResource("2_hkxe4")]
+offset_left = 1184.0
+offset_top = 150.0
+offset_right = 1440.0
+offset_bottom = 572.0
+text = "You've reached the
+Psyche asteroid! 
+Objectives will 
+be displayed here.
+Use the arrow keys/WASD
+to move the camera
+
+
+
+
+
+
+Press Enter/Spacebar 
+to scan the asteroid.
+(Press Enter/Space to continue)"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_15ndt")
+volume_db = -10.0
+
+[node name="CRTHumBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4qhsd")
+volume_db = -15.0
+autoplay = true
+parameters/looping = false
+
+[node name="Correct" type="PointLight2D" parent="."]
+position = Vector2(1330, 739)
+scale = Vector2(0.181952, 0.193103)
+energy = 11.21
+blend_mode = 2
+texture = ExtResource("7_6vvia")
+
+[connection signal="body_entered" from="hitbox1" to="hitbox1" method="_on_area2d_body_entered"]
+[connection signal="body_exited" from="hitbox1" to="hitbox1" method="_on_area2d_body_exited"]

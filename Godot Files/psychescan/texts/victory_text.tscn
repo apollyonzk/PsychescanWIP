@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq62abyfwocnx"]
+
+[ext_resource type="FontFile" uid="uid://dkfxjce33i1c" path="res://fonts/dogicapixel.ttf" id="1_y35on"]
+
+[node name="Label" type="Label"]
+anchors_preset = -1
+anchor_right = 0.222
+anchor_bottom = 0.198
+offset_right = -113.24
+offset_bottom = 38.16
+theme_override_constants/line_spacing = 6
+theme_override_fonts/font = ExtResource("1_y35on")
+text = "Psyche
+fully scanned!
+
+
+
+
+
+
+
+
+
+
+
+Data acquired:
+-Asteroid topography
+-Gravitational field data
+-Elemental composition"
+autowrap_mode = 3

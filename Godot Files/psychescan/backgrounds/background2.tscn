@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://b5x1ucl4jwbq4"]
+
+[ext_resource type="Texture2D" uid="uid://d3i5uhv7cwp4o" path="res://Globals/consoleBackgroundLarge.png" id="1_8sy1d"]
+[ext_resource type="PackedScene" uid="uid://rkniskrqmb35" path="res://psychescan/sprites/incorrect.tscn" id="3_6ebor"]
+[ext_resource type="Script" path="res://psychescan/scripts/SceneTransition2.gd" id="4_w6upg"]
+[ext_resource type="PackedScene" uid="uid://cvoudoufq5ms2" path="res://psychescan/texts/scannertext2.tscn" id="5_64cel"]
+[ext_resource type="AudioStream" uid="uid://buwrmofej0dv5" path="res://psychescan/assets/audio/proxSound.wav" id="5_fc77x"]
+[ext_resource type="Texture2D" uid="uid://c2vquuvgf0nmi" path="res://psychescan/assets/textures/squareReticle.png" id="5_y61kw"]
+[ext_resource type="AudioStream" uid="uid://bxxmw3llwoi57" path="res://psychescan/assets/audio/correct.wav" id="7_fu06o"]
+[ext_resource type="AudioStream" uid="uid://dhvsylxdlxxh" path="res://audio/incorrect.wav" id="8_jwdpb"]
+[ext_resource type="AudioStream" uid="uid://jv6cejdoyqie" path="res://psychescan/assets/audio/CRTHum.mp3" id="9_7mccw"]
+[ext_resource type="Texture2D" uid="uid://bduslsougetkd" path="res://psychescan/assets/textures/green light.png" id="9_w0lls"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj41b"]
+size = Vector2(80, 80)
+
+[node name="background" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="main" type="Polygon2D" parent="."]
+scale = Vector2(1.55089, 2.10742)
+texture = ExtResource("1_8sy1d")
+texture_scale = Vector2(2.67, 3.7)
+polygon = PackedVector2Array(0, 0, 0, 0, 1120, 0, 1120, 512, 0, 512)
+
+[node name="Incorrect" parent="." instance=ExtResource("3_6ebor")]
+position = Vector2(1164, 128)
+
+[node name="hitbox1" type="Area2D" parent="."]
+position = Vector2(524, 427)
+collision_layer = 2
+collision_mask = 10
+script = ExtResource("4_w6upg")
+
+[node name="reticleHitbox" type="CollisionShape2D" parent="hitbox1"]
+position = Vector2(96, 32)
+shape = SubResource("RectangleShape2D_sj41b")
+
+[node name="reticle" type="Polygon2D" parent="hitbox1"]
+position = Vector2(-51, 7)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_y61kw")
+texture_offset = Vector2(-42, 7)
+texture_scale = Vector2(15, 15)
+polygon = PackedVector2Array(43, -6, 75, -6, 75, 26, 43, 26)
+
+[node name="BeepAudio" type="AudioStreamPlayer" parent="hitbox1"]
+stream = ExtResource("5_fc77x")
+volume_db = -15.0
+
+[node name="Label" parent="." instance=ExtResource("5_64cel")]
+offset_left = 1181.0
+offset_top = 150.0
+offset_right = 1475.0
+offset_bottom = 419.0
+text = "Objective:
+Scan the asteroid in
+2 places
+
+
+
+
+
+
+
+
+
+
+Current Instrument: 
+X-Band Radio
+The X-Band Radio system
+measures Psyche's
+gravitational field.
+This, alongside the Multispectral Imager, helps scientists learn about Psyche's interior"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fu06o")
+volume_db = -10.0
+
+[node name="IncorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jwdpb")
+volume_db = -10.0
+
+[node name="CRTHumBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_7mccw")
+volume_db = -15.0
+autoplay = true
+parameters/looping = false
+
+[node name="Correct" type="PointLight2D" parent="."]
+position = Vector2(1330, 739)
+scale = Vector2(0.181952, 0.193103)
+energy = 11.21
+blend_mode = 2
+texture = ExtResource("9_w0lls")
+
+[connection signal="area_entered" from="hitbox1" to="hitbox1" method="_on_area2d_area_entered"]
+[connection signal="area_exited" from="hitbox1" to="hitbox1" method="_on_area2d_area_exited"]
+[connection signal="body_entered" from="hitbox1" to="hitbox1" method="_on_area2d_body_entered"]
+[connection signal="body_exited" from="hitbox1" to="hitbox1" method="_on_area2d_body_exited"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://v3uha6yq4pj7"]
+
+[ext_resource type="Texture2D" uid="uid://dndclb4bpkw1t" path="res://meteoroid-level/assets/space rocks.png" id="1_6id5q"]
+[ext_resource type="PackedScene" uid="uid://ckqhj1j1mjc3v" path="res://meteoroid-level/scenes/killzone.tscn" id="2_3puy5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj8pg"]
+atlas = ExtResource("1_6id5q")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2wlc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj8pg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne31y"]
+size = Vector2(91, 83)
+
+[node name="Non-moving Debris" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(64, -60)
+sprite_frames = SubResource("SpriteFrames_r2wlc")
+
+[node name="Killzone" parent="." instance=ExtResource("2_3puy5")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(54.5, -65.5)
+shape = SubResource("RectangleShape2D_ne31y")

@@ -1,0 +1,424 @@
+[gd_scene load_steps=29 format=3 uid="uid://de30lnc5vve28"]
+
+[ext_resource type="Script" path="res://Typing Level/typing_level.gd" id="1_yaj5j"]
+[ext_resource type="PackedScene" uid="uid://bfb4cc1is55wv" path="res://Typing Level/TypingBlock.tscn" id="2_wc733"]
+[ext_resource type="Texture2D" uid="uid://cwas0ww3ct4fo" path="res://meteoroid-level/assets/psyche shuttle.png" id="3_1ma2t"]
+[ext_resource type="Shader" path="res://psychescan/addons/StarScroll.gdshader" id="3_ccgx7"]
+[ext_resource type="Texture2D" uid="uid://b235l0bgqigf3" path="res://psychescan/assets/textures/meteoroid-level-border-background.png" id="3_rhs66"]
+[ext_resource type="Texture2D" uid="uid://b3oix7yosa1gp" path="res://psychescan/assets/textures/psyche1.png" id="3_sbcle"]
+[ext_resource type="Shader" path="res://psychescan/addons/CRTVisual.gdshader" id="5_6taii"]
+[ext_resource type="AudioStream" uid="uid://cciky4pmskqit" path="res://psychescan/assets/audio/CRTHum.mp3" id="5_onspf"]
+[ext_resource type="Texture2D" uid="uid://dmybj5apim6t2" path="res://Typing Level/Assets/psyche-magnetometer-1536x1078.jpg" id="6_21f1y"]
+[ext_resource type="Texture2D" uid="uid://ij706p30csnm" path="res://psychescan/assets/textures/green light.png" id="6_hde7p"]
+[ext_resource type="Texture2D" uid="uid://d3u0t7mhh8kfl" path="res://Globals/consoleBackgroundLarge.png" id="7_r7tal"]
+[ext_resource type="AudioStream" uid="uid://dv1ncsbrduoxn" path="res://psychescan/assets/audio/correct.wav" id="7_snvv2"]
+[ext_resource type="Texture2D" uid="uid://bxa8kftj6yh8a" path="res://Typing Level/Assets/psyche-dsoc-1536x1152.jpg" id="10_hur34"]
+[ext_resource type="Texture2D" uid="uid://cfbevvae1woyq" path="res://Typing Level/Assets/psyche-gamma-ray-spectrometer-768x1387.jpg" id="12_ekypa"]
+[ext_resource type="FontFile" uid="uid://ccxyuwpsc1qh4" path="res://fonts/dogicapixel.ttf" id="13_al5tl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clt4h"]
+shader = ExtResource("3_ccgx7")
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pixf3"]
+shader = ExtResource("5_6taii")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 25.0
+shader_parameter/roll_variation = 0.581
+shader_parameter/distort_intensity = 0.0
+shader_parameter/aberration = 4.75e-08
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2c7d"]
+atlas = ExtResource("10_hur34")
+region = Rect2(0, 97.9497, 1378.48, 701.867)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnbga"]
+atlas = ExtResource("6_21f1y")
+region = Rect2(600, 300, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krat0"]
+atlas = ExtResource("12_ekypa")
+region = Rect2(34.0498, 940.3, 684.86, 406.56)
+
+[sub_resource type="Animation" id="Animation_6pbho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PsycheShuttle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(644, 468)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PsycheShuttle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7.33038]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Node2D3/Psyche1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(646, 455)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Node2D3/Psyche1:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fsffb"]
+resource_name = "Spin"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PsycheShuttle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0472, 7.33038]
+}
+
+[sub_resource type="Animation" id="Animation_w0hc3"]
+resource_name = "Start Cutscene"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PsycheShuttle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(644, 468), Vector2(1090, 468)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PsycheShuttle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0472, 7.33038]
+}
+
+[sub_resource type="Animation" id="Animation_2usnb"]
+resource_name = "endingSection"
+length = 12.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PsycheShuttle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.03333, 10, 12.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1090, 468), Vector2(644, 468), Vector2(144, 468), Vector2(-106, 468)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PsycheShuttle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.03333, 10, 12.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [7.33038, 1.0472, -5.23599, -8.37758]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Node2D3/Psyche1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(646, 455), Vector2(-354, 455)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qoj6a"]
+_data = {
+"RESET": SubResource("Animation_6pbho"),
+"Spin": SubResource("Animation_fsffb"),
+"Start Cutscene": SubResource("Animation_w0hc3"),
+"endingSection": SubResource("Animation_2usnb")
+}
+
+[sub_resource type="Animation" id="Animation_7nn33"]
+resource_name = "PsycheSpin"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Node2D3/Psyche1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_abg4s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Node2D3/Psyche1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4i5qg"]
+_data = {
+"PsycheSpin": SubResource("Animation_7nn33"),
+"RESET": SubResource("Animation_abg4s")
+}
+
+[node name="TypingLevel" type="Node2D"]
+script = ExtResource("1_yaj5j")
+text = ExtResource("2_wc733")
+
+[node name="Node2D3" type="Node2D" parent="."]
+
+[node name="StarBackground" type="Sprite2D" parent="Node2D3"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_clt4h")
+position = Vector2(461, 446)
+scale = Vector2(4.74709, 5.56027)
+texture = ExtResource("3_rhs66")
+region_enabled = true
+region_rect = Rect2(0, 0, 688.5, 365.25)
+
+[node name="Psyche1" type="Sprite2D" parent="Node2D3"]
+position = Vector2(646, 455)
+scale = Vector2(0.633745, 0.603112)
+texture = ExtResource("3_sbcle")
+
+[node name="Node2D" type="Node2D" parent="Node2D3"]
+position = Vector2(1097, 385)
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 124.0
+offset_top = 116.0
+offset_right = 1089.0
+offset_bottom = 821.0
+
+[node name="Outline" type="Polygon2D" parent="Control"]
+position = Vector2(61, 75)
+scale = Vector2(1.425, 0.998)
+color = Color(0.687215, 0.687215, 0.687215, 1)
+polygon = PackedVector2Array(-1.43565, 0, -1.43565, 520.547, 610.154, 520.547, 610.154, 0)
+
+[node name="black background" type="Polygon2D" parent="Control/Outline"]
+position = Vector2(7.01753, 10.0201)
+scale = Vector2(0.977607, 0.962453)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1.43565, 0, -1.43565, 520.547, 610.154, 520.547, 610.154, 0)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = -266.5
+offset_right = -44.0
+offset_bottom = 232.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_al5tl")
+theme_override_font_sizes/font_size = 25
+text = "Nothing to see here"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.0
+offset_top = 107.0
+offset_right = -64.0
+offset_bottom = 180.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 100
+
+[node name="Label2" type="Label" parent="Control/Button"]
+layout_mode = 0
+offset_top = -35.0
+offset_right = 62.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "X"
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="PsycheShuttle" type="Sprite2D" parent="Node2D2"]
+position = Vector2(644, 468)
+rotation = 7.33038
+scale = Vector2(0.300781, 0.300781)
+texture = ExtResource("3_1ma2t")
+
+[node name="CRTShader" type="Polygon2D" parent="Node2D2"]
+material = SubResource("ShaderMaterial_pixf3")
+position = Vector2(-419, -186)
+scale = Vector2(2.84442, 2.27598)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(150, 135, 159, 112, 183, 98, 546, 98, 570, 114, 587, 145, 587, 437, 577, 461, 563, 475, 186, 475, 167, 454, 153, 423)
+
+[node name="main" type="Polygon2D" parent="Node2D2"]
+scale = Vector2(1.55089, 2.10742)
+texture = ExtResource("7_r7tal")
+texture_scale = Vector2(2.67, 3.634)
+polygon = PackedVector2Array(0, 0, 0, 0, 1120, 0, 1120, 512, 0, 512)
+
+[node name="Psyche-dsoc-1536x1152" type="Sprite2D" parent="Node2D2"]
+visible = false
+position = Vector2(1319, 508)
+scale = Vector2(0.203758, 0.203758)
+texture = SubResource("AtlasTexture_p2c7d")
+
+[node name="MagnetometerImage" type="Sprite2D" parent="Node2D2"]
+visible = false
+position = Vector2(1319, 508)
+scale = Vector2(0.606039, 0.606039)
+texture = SubResource("AtlasTexture_jnbga")
+
+[node name="Psyche-gamma-ray-spectrometer-768x1387" type="Sprite2D" parent="Node2D2"]
+visible = false
+position = Vector2(1317, 517)
+scale = Vector2(0.408867, 0.408867)
+texture = SubResource("AtlasTexture_krat0")
+
+[node name="Label" type="Label" parent="Node2D2"]
+offset_left = 1171.0
+offset_top = 138.0
+offset_right = 1460.0
+offset_bottom = 346.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_al5tl")
+theme_override_font_sizes/font_size = 20
+text = "The Psyche sattellite will send out words. To complete this section, type the words to analyze what they are."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="CRTHumBackground" type="AudioStreamPlayer" parent="Node2D2"]
+stream = ExtResource("5_onspf")
+volume_db = -15.0
+autoplay = true
+parameters/looping = false
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="Node2D2"]
+stream = ExtResource("7_snvv2")
+volume_db = -15.0
+
+[node name="Correct" type="PointLight2D" parent="Node2D2"]
+visible = false
+position = Vector2(1330, 739)
+scale = Vector2(0.181952, 0.193103)
+energy = 11.21
+blend_mode = 2
+texture = ExtResource("6_hde7p")
+
+[node name="satellitePlayer" type="AnimationPlayer" parent="Node2D2"]
+libraries = {
+"": SubResource("AnimationLibrary_qoj6a")
+}
+
+[node name="psychePlayer" type="AnimationPlayer" parent="Node2D2"]
+libraries = {
+"": SubResource("AnimationLibrary_4i5qg")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1098, 384)
+
+[node name="SignoffControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1157.0
+offset_top = 278.0
+offset_right = 1980.0
+offset_bottom = 702.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(1.721, 1.721)
+
+[connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]
+[connection signal="animation_finished" from="Node2D2/satellitePlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Node2D2/psychePlayer" to="." method="_on_psyche_player_animation_finished"]

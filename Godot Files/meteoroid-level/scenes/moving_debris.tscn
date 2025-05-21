@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=3 uid="uid://cuojpnqpbf5v4"]
+
+[ext_resource type="Script" path="res://meteoroid-level/scripts/moving_debris.gd" id="1_pall4"]
+[ext_resource type="Texture2D" uid="uid://cf1yljtwswqdc" path="res://meteoroid-level/assets/rocket engine nozzle.png" id="2_42wf0"]
+[ext_resource type="PackedScene" uid="uid://ckqhj1j1mjc3v" path="res://meteoroid-level/scenes/killzone.tscn" id="2_62lbh"]
+[ext_resource type="Texture2D" uid="uid://jmh32f3h5uh0" path="res://meteoroid-level/assets/solarpanel.png" id="2_equyb"]
+[ext_resource type="Texture2D" uid="uid://c1c4m3y2uqbm0" path="res://meteoroid-level/assets/fuel tank.png" id="3_7s7o6"]
+[ext_resource type="Texture2D" uid="uid://db2lreqcjdhrr" path="res://meteoroid-level/assets/satellitedish.png" id="4_frud4"]
+[ext_resource type="Texture2D" uid="uid://nfne68moid53" path="res://meteoroid-level/assets/wires.png" id="6_5stgc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfw1a"]
+atlas = ExtResource("2_42wf0")
+region = Rect2(0, 0, 121, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2jkk"]
+atlas = ExtResource("3_7s7o6")
+region = Rect2(20, 14, 86, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxw4d"]
+atlas = ExtResource("4_frud4")
+region = Rect2(0, 15, 86, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gc8x"]
+atlas = ExtResource("2_equyb")
+region = Rect2(14, 19, 71, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mhvq"]
+atlas = ExtResource("6_5stgc")
+region = Rect2(0, 0, 116, 89)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0x18u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfw1a")
+}],
+"loop": true,
+"name": &"engine nozzle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2jkk")
+}],
+"loop": true,
+"name": &"fueltank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxw4d")
+}],
+"loop": true,
+"name": &"satellitedish",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gc8x")
+}],
+"loop": true,
+"name": &"solarpanel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mhvq")
+}],
+"loop": true,
+"name": &"wires",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_766fc"]
+radius = 363.319
+
+[node name="Moving Debris" type="Node2D"]
+script = ExtResource("1_pall4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0x18u")
+animation = &"satellitedish"
+
+[node name="Killzone" parent="AnimatedSprite2D" instance=ExtResource("2_62lbh")]
+scale = Vector2(0.0625, 0.0625)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Killzone"]
+position = Vector2(16, -48)
+shape = SubResource("CircleShape2D_766fc")

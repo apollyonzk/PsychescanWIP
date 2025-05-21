@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://icn4cxvh50yi"]
+
+[ext_resource type="FontFile" uid="uid://dkfxjce33i1c" path="res://fonts/dogicapixel.ttf" id="1_1exa5"]
+
+[node name="Label" type="Label"]
+anchors_preset = -1
+anchor_right = 0.129
+anchor_bottom = 0.178
+offset_right = 8.32001
+offset_bottom = 161.76
+theme_override_constants/line_spacing = 6
+theme_override_fonts/font = ExtResource("1_1exa5")
+text = "Objective:
+Scan the asteroid in
+3 places
+
+
+
+
+
+
+
+
+
+
+
+
+Current Instrument: 
+Gamma-Ray/Neutron
+Spectrometer
+The Gamma-Ray and
+Neutron Spectrometer
+is used to map Psyche's
+elemental composition."
+autowrap_mode = 3

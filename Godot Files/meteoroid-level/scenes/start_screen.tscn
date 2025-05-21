@@ -1,0 +1,162 @@
+[gd_scene load_steps=17 format=3 uid="uid://bnhjs60ggrf82"]
+
+[ext_resource type="Script" path="res://meteoroid-level/scripts/start_screen.gd" id="1_6vjnl"]
+[ext_resource type="Script" path="res://meteoroid-level/scripts/start_button.gd" id="1_so6fb"]
+[ext_resource type="Texture2D" uid="uid://c6yulvmw7nl5" path="res://Globals/consoleBackgroundLarge.png" id="2_vegla"]
+[ext_resource type="AudioStream" uid="uid://der8n8kbmycyq" path="res://meteoroid-level/assets/mouse-click.wav" id="3_ei73i"]
+[ext_resource type="FontFile" uid="uid://cb83sko7purs8" path="res://meteoroid-level/assets/dogicapixel.ttf" id="4_cl6wa"]
+[ext_resource type="Texture2D" uid="uid://c7axgunm3r5sn" path="res://meteoroid-level/assets/meteoroid-level-border-background.png" id="5_kgchi"]
+[ext_resource type="Shader" path="res://meteoroid-level/scripts/start_screen.gdshader" id="5_qi3qn"]
+[ext_resource type="FontFile" uid="uid://c0ngj1vjiotmk" path="res://fonts/dogicapixelbold.ttf" id="7_bbis5"]
+[ext_resource type="Texture2D" uid="uid://jxp0usvnd0y6" path="res://meteoroid-level/assets/buttons.png" id="8_02vv5"]
+[ext_resource type="Texture2D" uid="uid://cauitf2on2quq" path="res://meteoroid-level/assets/psyche shuttle.png" id="8_ix3n2"]
+[ext_resource type="Script" path="res://meteoroid-level/scripts/spinning_shuttle.gd" id="9_iq4bd"]
+[ext_resource type="AudioStream" uid="uid://dx3ljwac6e6kw" path="res://audio/dialogue.mp3" id="11_rh53o"]
+[ext_resource type="Shader" path="res://psychescan/addons/CRTVisual.gdshader" id="13_d5r3h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eiyju"]
+shader = ExtResource("5_qi3qn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xps5"]
+content_margin_left = 100.0
+content_margin_top = 100.0
+content_margin_right = 100.0
+content_margin_bottom = 100.0
+texture = ExtResource("8_02vv5")
+expand_margin_left = 400.0
+expand_margin_top = 150.0
+expand_margin_right = 400.0
+expand_margin_bottom = 75.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sr1k6"]
+shader = ExtResource("13_d5r3h")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 25.0
+shader_parameter/roll_variation = 0.581
+shader_parameter/distort_intensity = 0.0
+shader_parameter/aberration = 4.75e-08
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6vjnl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_eiyju")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1284.0
+offset_top = -713.0
+offset_right = 547.0
+offset_bottom = 569.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_kgchi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-287, -186.5)
+scale = Vector2(0.578125, 0.578125)
+texture = ExtResource("8_ix3n2")
+script = ExtResource("9_iq4bd")
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+offset_left = -4691.0
+offset_top = -397.5
+offset_right = 4024.0
+offset_bottom = 145.5
+theme_override_fonts/font = ExtResource("4_cl6wa")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="Message"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.846
+anchor_right = 0.5
+anchor_bottom = 0.876
+offset_left = -425.5
+offset_top = 229.622
+offset_right = 422.5
+offset_bottom = 309.332
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_disabled_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_hover_color = Color(0.945098, 0.462745, 0.231373, 1)
+theme_override_colors/font_pressed_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_focus_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_outline_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_normal_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_focus_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_pressed_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_hover_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_disabled_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_fonts/font = ExtResource("7_bbis5")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_0xps5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0xps5")
+text = "START SIMULATION"
+script = ExtResource("1_so6fb")
+
+[node name="ConsoleBackgroundLarge" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(97, 71)
+texture = ExtResource("2_vegla")
+
+[node name="Clicksound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ei73i")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="TypingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_rh53o")
+
+[node name="CRTShader" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_sr1k6")
+position = Vector2(-1753.33, -997.336)
+scale = Vector2(3.84383, 3.22281)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(150, 135, 159, 112, 183, 98, 546, 98, 570, 114, 587, 145, 587, 437, 577, 461, 563, 475, 186, 475, 167, 454, 153, 423, 149.415, 275.925)
+
+[connection signal="pressed" from="Message/StartButton" to="Message/StartButton" method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="Message/StartButton" method="_on_timer_timeout"]

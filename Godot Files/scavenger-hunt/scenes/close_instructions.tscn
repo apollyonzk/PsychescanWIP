@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl26hakhbrscd"]
+
+[ext_resource type="FontFile" uid="uid://j00rrwigmjoe" path="res://fonts/dogicapixel.ttf" id="1_ssmem"]
+
+[node name="CloseInstructions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2462.0
+offset_bottom = -1604.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseInstructions" type="Label" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.3746
+offset_top = 34.9334
+offset_right = 60.6254
+offset_bottom = 48.9334
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ssmem")
+theme_override_font_sizes/font_size = 8
+text = "Press [ESC] or [Backspace] to close"
+horizontal_alignment = 1
+vertical_alignment = 1

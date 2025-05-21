@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvoudoufq5ms2"]
+
+[ext_resource type="FontFile" uid="uid://dkfxjce33i1c" path="res://fonts/dogicapixel.ttf" id="1_p1gwh"]
+
+[node name="Label" type="Label"]
+anchors_preset = -1
+anchor_right = 0.129
+anchor_bottom = 0.198
+offset_right = 21.832
+offset_bottom = 74.47
+theme_override_constants/line_spacing = 6
+theme_override_fonts/font = ExtResource("1_p1gwh")
+text = "Objective:
+Scan the asteroid in
+2 places
+
+
+
+
+
+
+
+
+Current Instrument: 
+X-Band Radio
+The X-Band Radio system
+measures Psyche's
+gravitational field.
+This, alongside the Multispectral Imager, helps scientists learn about Psyche's interior"
+autowrap_mode = 3

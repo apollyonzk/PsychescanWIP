@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://fdj4n1xw0w83"]
+
+[ext_resource type="Script" path="res://psychescan/scripts/PlayerAsteroid.gd" id="1_863pb"]
+[ext_resource type="Texture2D" uid="uid://d162g7ouh2vbs" path="res://psychescan/assets/textures/psyche1.png" id="2_c3rjc"]
+[ext_resource type="Shader" path="res://psychescan/addons/StarScroll.gdshader" id="2_dy1jg"]
+[ext_resource type="Texture2D" uid="uid://dqnw2vpndho8c" path="res://psychescan/assets/textures/meteoroid-level-border-background.png" id="3_d3k8h"]
+[ext_resource type="PackedScene" uid="uid://dipu66gwaj7se" path="res://psychescan/sprites/sparkle.tscn" id="3_ws2bb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2ats"]
+shader = ExtResource("2_dy1jg")
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg10v"]
+size = Vector2(703.862, 639.571)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpr0l"]
+size = Vector2(320, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3eek"]
+size = Vector2(112.325, 96)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_863pb")
+
+[node name="StarBackground" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_j2ats")
+position = Vector2(461, 446)
+scale = Vector2(4.74709, 5.56027)
+texture = ExtResource("3_d3k8h")
+region_enabled = true
+region_rect = Rect2(0, 0, 688.5, 365.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(464.091, 447.3)
+scale = Vector2(1.31818, 1.4)
+shape = SubResource("RectangleShape2D_mg10v")
+
+[node name="TextureShape" type="Polygon2D" parent="."]
+position = Vector2(84.3638, 0)
+scale = Vector2(1.31818, 1.4)
+texture = ExtResource("2_c3rjc")
+texture_offset = Vector2(64, 2)
+texture_scale = Vector2(1.45, 1.43)
+polygon = PackedVector2Array(288, 0, -64, 0, -64, 579.518, -64, 640, 640, 640, 640, 578.621, 640, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="ProxDetector" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(672, 640)
+shape = SubResource("RectangleShape2D_mpr0l")
+debug_color = Color(2.83971e-06, 0.643109, 0.305986, 0.42)
+
+[node name="hitbox" type="CharacterBody2D" parent="." groups=["player_boxes"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="hitboxColl" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(672, 640)
+scale = Vector2(0.997105, 1)
+shape = SubResource("RectangleShape2D_y3eek")
+
+[node name="AnimatedSprite2D" parent="hitbox" instance=ExtResource("3_ws2bb")]
+position = Vector2(672, 640)
+frame = 10
+frame_progress = 0.0183787

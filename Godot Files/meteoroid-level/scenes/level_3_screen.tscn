@@ -1,0 +1,200 @@
+[gd_scene load_steps=17 format=3 uid="uid://bsr82lokxlfhg"]
+
+[ext_resource type="Script" path="res://meteoroid-level/scripts/level_3_screen.gd" id="1_4sdw6"]
+[ext_resource type="Script" path="res://meteoroid-level/scripts/level_3_start.gd" id="1_dui04"]
+[ext_resource type="FontFile" uid="uid://cb83sko7purs8" path="res://meteoroid-level/assets/dogicapixel.ttf" id="2_04hhx"]
+[ext_resource type="Shader" path="res://meteoroid-level/scripts/start_screen.gdshader" id="2_h283e"]
+[ext_resource type="Texture2D" uid="uid://c6yulvmw7nl5" path="res://Globals/consoleBackgroundLarge.png" id="2_hc5e7"]
+[ext_resource type="FontFile" uid="uid://c0ngj1vjiotmk" path="res://fonts/dogicapixelbold.ttf" id="3_0nafc"]
+[ext_resource type="AudioStream" uid="uid://der8n8kbmycyq" path="res://meteoroid-level/assets/mouse-click.wav" id="3_730li"]
+[ext_resource type="Texture2D" uid="uid://c7axgunm3r5sn" path="res://meteoroid-level/assets/meteoroid-level-border-background.png" id="3_r7wkk"]
+[ext_resource type="Texture2D" uid="uid://jxp0usvnd0y6" path="res://meteoroid-level/assets/buttons.png" id="4_35utx"]
+[ext_resource type="AudioStream" uid="uid://dx3ljwac6e6kw" path="res://audio/dialogue.mp3" id="7_ts7ra"]
+[ext_resource type="PackedScene" uid="uid://v3uha6yq4pj7" path="res://meteoroid-level/scenes/non_moving_debris.tscn" id="11_25k4y"]
+[ext_resource type="PackedScene" uid="uid://cuojpnqpbf5v4" path="res://meteoroid-level/scenes/moving_debris.tscn" id="12_cfgm4"]
+[ext_resource type="Shader" path="res://psychescan/addons/CRTVisual.gdshader" id="13_by0dd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5fa6"]
+shader = ExtResource("2_h283e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cmrq"]
+content_margin_left = 200.0
+content_margin_top = 50.0
+content_margin_right = 200.0
+content_margin_bottom = 50.0
+texture = ExtResource("4_35utx")
+expand_margin_left = 300.0
+expand_margin_top = 200.0
+expand_margin_right = 300.0
+expand_margin_bottom = 125.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d34ys"]
+shader = ExtResource("13_by0dd")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 25.0
+shader_parameter/roll_variation = 0.581
+shader_parameter/distort_intensity = 0.0
+shader_parameter/aberration = 4.75e-08
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="Level 3 Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4sdw6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_p5fa6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 156.0
+offset_right = -885.0
+offset_bottom = -296.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_r7wkk")
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4707.0
+offset_top = -385.5
+offset_right = 4008.0
+offset_bottom = 157.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_04hhx")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="Message"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.846
+anchor_right = 0.5
+anchor_bottom = 0.876
+offset_left = -162.5
+offset_top = 181.622
+offset_right = 173.5
+offset_bottom = 261.332
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_disabled_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_hover_color = Color(0.945098, 0.462745, 0.231373, 1)
+theme_override_colors/font_pressed_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_focus_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/font_outline_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_normal_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_focus_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_pressed_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_hover_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_colors/icon_disabled_color = Color(0.235294, 0.0156863, 0.172549, 1)
+theme_override_fonts/font = ExtResource("3_0nafc")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_0cmrq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0cmrq")
+text = "READY"
+script = ExtResource("1_dui04")
+
+[node name="ConsoleBackgroundLarge" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1493, 938.5)
+texture = ExtResource("2_hc5e7")
+
+[node name="Clicksound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_730li")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="TypingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ts7ra")
+volume_db = 15.0
+
+[node name="AvoidInstruction" type="Label" parent="."]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 2066.0
+offset_top = 844.0
+offset_right = 2460.0
+offset_bottom = 881.0
+theme_override_fonts/font = ExtResource("2_04hhx")
+theme_override_font_sizes/font_size = 42
+text = "Avoid These!"
+
+[node name="DebrisObjects" type="Node" parent="."]
+
+[node name="Non-moving Debris" parent="DebrisObjects" instance=ExtResource("11_25k4y")]
+z_index = 1
+position = Vector2(2216, 380)
+
+[node name="Moving Debris5" parent="DebrisObjects" instance=ExtResource("12_cfgm4")]
+z_index = 1
+position = Vector2(2437, 511)
+
+[node name="Moving Debris4" parent="DebrisObjects" instance=ExtResource("12_cfgm4")]
+z_index = 1
+position = Vector2(2095, 491)
+
+[node name="Moving Debris3" parent="DebrisObjects" instance=ExtResource("12_cfgm4")]
+z_index = 1
+position = Vector2(2262, 488)
+
+[node name="Moving Debris2" parent="DebrisObjects" instance=ExtResource("12_cfgm4")]
+z_index = 1
+position = Vector2(2451, 285)
+
+[node name="Moving Debris" parent="DebrisObjects" instance=ExtResource("12_cfgm4")]
+z_index = 1
+position = Vector2(2075, 293)
+
+[node name="CRTShader" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_d34ys")
+position = Vector2(-364, -129)
+scale = Vector2(3.84383, 3.22281)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(150, 135, 159, 112, 183, 98, 546, 98, 570, 114, 587, 145, 587, 437, 577, 461, 563, 475, 186, 475, 167, 454, 153, 423, 149.415, 275.925)
+
+[connection signal="pressed" from="Message/StartButton" to="Message/StartButton" method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="Message/StartButton" method="_on_timer_timeout"]

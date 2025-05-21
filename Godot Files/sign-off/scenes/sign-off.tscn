@@ -1,0 +1,240 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmvmiwx70f2yw"]
+
+[ext_resource type="Script" path="res://sign-off/scripts/sign-off.gd" id="1_gset1"]
+[ext_resource type="Texture2D" uid="uid://drnwtf36b6j75" path="res://sign-off/assets/blank-doc.png" id="2_ov8y0"]
+[ext_resource type="FontFile" uid="uid://bk05fmbl85re6" path="res://fonts/AnandaBlackPersonalUseRegular-rg9Rx.ttf" id="3_ir5xj"]
+[ext_resource type="FontFile" uid="uid://cqhm2shnhswle" path="res://fonts/Marker Felt Thin.ttf" id="4_e3x4q"]
+[ext_resource type="FontFile" uid="uid://bmet2qtldgas8" path="res://fonts/Nature Beauty Personal Use.ttf" id="5_v20fd"]
+[ext_resource type="FontFile" uid="uid://dionvgykj0wx3" path="res://fonts/Noteworthy-Lt.ttf" id="6_4af2g"]
+
+[sub_resource type="Animation" id="Animation_cpqkd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PageContainer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cover:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ipjpg"]
+resource_name = "cover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eya8w"]
+resource_name = "cover_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e0yih"]
+resource_name = "leave_screen"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.03333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -100), Vector2(2000, -2000), Vector2(3000, -3000), Vector2(4500, -4000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PageContainer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.03333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.816814, -2.28638, -3.59189]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g46m6"]
+_data = {
+"RESET": SubResource("Animation_cpqkd"),
+"cover": SubResource("Animation_ipjpg"),
+"cover_fade": SubResource("Animation_eya8w"),
+"leave_screen": SubResource("Animation_e0yih")
+}
+
+[node name="SignOff" type="Node2D"]
+script = ExtResource("1_gset1")
+
+[node name="Desk" type="ColorRect" parent="."]
+offset_left = -3803.0
+offset_top = -2890.0
+offset_right = 4350.0
+offset_bottom = 2969.0
+color = Color(0.915605, 0.917806, 1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.4, 0.4)
+
+[node name="PageContainer" type="Node2D" parent="."]
+position = Vector2(0, 2000)
+scale = Vector2(1.2, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="PageContainer"]
+position = Vector2(1, 83)
+texture = ExtResource("2_ov8y0")
+
+[node name="Input" type="Control" parent="PageContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -919.0
+offset_top = -1087.0
+offset_right = 919.0
+offset_bottom = 1259.0
+
+[node name="SubmittingParty" type="Label" parent="PageContainer/Input"]
+layout_mode = 0
+offset_left = -128.0
+offset_top = 1581.0
+offset_right = 562.0
+offset_bottom = 1681.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ir5xj")
+theme_override_font_sizes/font_size = 100
+
+[node name="SubmittingName" type="Label" parent="PageContainer/Input"]
+layout_mode = 0
+offset_left = -125.167
+offset_top = 1787.0
+offset_right = 101.833
+offset_bottom = 1883.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_e3x4q")
+theme_override_font_sizes/font_size = 70
+vertical_alignment = 1
+
+[node name="SubmittingTitle" type="Label" parent="PageContainer/Input"]
+layout_mode = 0
+offset_left = -131.0
+offset_top = 1972.83
+offset_right = 649.0
+offset_bottom = 2068.83
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_e3x4q")
+theme_override_font_sizes/font_size = 70
+vertical_alignment = 1
+
+[node name="DateSubmitted" type="Label" parent="PageContainer/Input"]
+layout_mode = 0
+offset_left = 1293.17
+offset_top = 1582.83
+offset_right = 1667.17
+offset_bottom = 1678.83
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_e3x4q")
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+
+[node name="ReceivingParty" type="Label" parent="PageContainer/Input"]
+layout_mode = 0
+offset_left = -120.167
+offset_top = 2180.33
+offset_right = 569.833
+offset_bottom = 2314.33
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_v20fd")
+theme_override_font_sizes/font_size = 100
+
+[node name="ReceivingName" type="Label" parent="PageContainer/Input"]
+layout_mode = 0
+offset_left = -119.333
+offset_top = 2402.83
+offset_right = 107.667
+offset_bottom = 2515.83
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_4af2g")
+theme_override_font_sizes/font_size = 70
+vertical_alignment = 1
+
+[node name="ReceivingTitle" type="Label" parent="PageContainer/Input"]
+layout_mode = 0
+offset_left = -124.333
+offset_top = 2587.0
+offset_right = 655.667
+offset_bottom = 2700.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_4af2g")
+theme_override_font_sizes/font_size = 70
+vertical_alignment = 1
+
+[node name="DateReceived" type="Label" parent="PageContainer/Input"]
+layout_mode = 0
+offset_left = 1299.0
+offset_top = 2216.17
+offset_right = 1673.0
+offset_bottom = 2313.17
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_4af2g")
+theme_override_font_sizes/font_size = 50
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g46m6")
+}
+
+[node name="Cover" type="ColorRect" parent="."]
+offset_left = -4526.0
+offset_top = -3728.0
+offset_right = 5312.0
+offset_bottom = 3821.0
+color = Color(0, 0, 0, 0)

@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://db3wqf71m7ltl"]
+
+[ext_resource type="FontFile" uid="uid://dkfxjce33i1c" path="res://fonts/dogicapixel.ttf" id="1_gs7tp"]
+
+[node name="Label" type="Label"]
+anchors_preset = -1
+anchor_right = 0.133
+anchor_bottom = 0.198
+offset_right = 76.664
+offset_bottom = 40.47
+theme_override_constants/line_spacing = 6
+theme_override_fonts/font = ExtResource("1_gs7tp")
+text = "You've reached the
+Psyche asteroid! 
+Objectives will 
+be displayed here.
+Use the arrow keys/WASD
+to move the camera
+
+
+
+
+Press Enter/Spacebar 
+to scan the asteroid.
+(Press Enter/Space
+to continue)"
+autowrap_mode = 3

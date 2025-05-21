@@ -1,0 +1,168 @@
+[gd_scene load_steps=10 format=3 uid="uid://wnattyfpcri1"]
+
+[ext_resource type="Script" path="res://scavenger-hunt/scripts/question.gd" id="1_5401r"]
+[ext_resource type="Texture2D" uid="uid://c5ls6saonevjj" path="res://scavenger-hunt/assets/pop_up/pop_up.png" id="1_cosv8"]
+[ext_resource type="FontFile" uid="uid://j00rrwigmjoe" path="res://fonts/dogicapixel.ttf" id="3_r7wbi"]
+[ext_resource type="StyleBox" uid="uid://bx43r5y5r8lr5" path="res://scavenger-hunt/assets/pop_up/question-hover.tres" id="5_8q6e3"]
+[ext_resource type="StyleBox" uid="uid://c3u5ye06msjog" path="res://scavenger-hunt/assets/pop_up/normal.tres" id="5_sm3y0"]
+[ext_resource type="PackedScene" uid="uid://cl26hakhbrscd" path="res://scavenger-hunt/scenes/close_instructions.tscn" id="6_u81ga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fivdh"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_islpc"]
+content_margin_left = 1.0
+content_margin_top = 2.0
+content_margin_right = 1.0
+content_margin_bottom = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gllus"]
+content_margin_left = 1.0
+content_margin_top = 2.0
+content_margin_right = 1.0
+content_margin_bottom = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="QuestionPopUp" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 248.0
+offset_bottom = 97.0
+script = ExtResource("1_5401r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 250.0
+offset_bottom = 98.0
+color = Color(1, 1, 1, 0.278431)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 248.0
+offset_bottom = 96.0
+texture = ExtResource("1_cosv8")
+
+[node name="QuestionContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(215, 80)
+layout_mode = 2
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 240.0
+offset_bottom = 92.0
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="QuestionLabel" type="Label" parent="QuestionContainer"]
+custom_minimum_size = Vector2(215, 17)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_fonts/font = ExtResource("3_r7wbi")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fivdh")
+text = "Temporary Temporary Temporary Temporary Temporary"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Options" type="VBoxContainer" parent="QuestionContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Option1" type="Button" parent="QuestionContainer/Options"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_r7wbi")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("5_8q6e3")
+theme_override_styles/hover = ExtResource("5_8q6e3")
+theme_override_styles/pressed = ExtResource("5_8q6e3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_islpc")
+text = "The spacecraft will not collect data"
+alignment = 0
+autowrap_mode = 3
+
+[node name="Option2" type="Button" parent="QuestionContainer/Options"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_r7wbi")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("5_8q6e3")
+theme_override_styles/hover = ExtResource("5_8q6e3")
+theme_override_styles/pressed = ExtResource("5_8q6e3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gllus")
+text = "Possibly part of a planetesimal core"
+alignment = 0
+autowrap_mode = 3
+
+[node name="Option3" type="Button" parent="QuestionContainer/Options"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_r7wbi")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("5_8q6e3")
+theme_override_styles/hover = ExtResource("5_8q6e3")
+theme_override_styles/pressed = ExtResource("5_8q6e3")
+theme_override_styles/normal = ExtResource("5_sm3y0")
+text = "The spacecraft will not orbit Psyche"
+alignment = 0
+autowrap_mode = 3
+
+[node name="ValidationContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 240.0
+offset_bottom = 92.0
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Message" type="Label" parent="ValidationContainer"]
+custom_minimum_size = Vector2(215, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("3_r7wbi")
+theme_override_font_sizes/font_size = 8
+text = "Temporary Temporary Temporary Temporary Temporary Temporary"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CloseInstructions" parent="." instance=ExtResource("6_u81ga")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -2.0
+offset_right = 0.0
+offset_bottom = -2.0
+
+[connection signal="option1" from="." to="." method="_on_option_1"]
+[connection signal="option2" from="." to="." method="_on_option_2"]
+[connection signal="option3" from="." to="." method="_on_option_3"]
+[connection signal="pressed" from="QuestionContainer/Options/Option1" to="." method="_on_option_1_pressed"]
+[connection signal="pressed" from="QuestionContainer/Options/Option2" to="." method="_on_option_2_pressed"]
+[connection signal="pressed" from="QuestionContainer/Options/Option3" to="." method="_on_option_3_pressed"]

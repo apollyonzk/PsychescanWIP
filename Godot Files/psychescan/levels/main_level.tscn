@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://rwdwbi0t7lbo"]
+
+[ext_resource type="PackedScene" uid="uid://dn7vq2upimlf3" path="res://psychescan/levels/tutorialLevel.tscn" id="1_8yx3t"]
+
+[node name="MainLevel" type="Node2D"]
+
+[node name="TutorialStart" parent="." instance=ExtResource("1_8yx3t")]

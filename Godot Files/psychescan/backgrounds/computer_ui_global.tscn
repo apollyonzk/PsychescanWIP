@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0kifrrk7of6y"]
+
+[ext_resource type="Texture2D" uid="uid://bli4mr52eoyb4" path="res://Globals/consoleBackgroundLarge.png" id="1_l6nf8"]
+[ext_resource type="PackedScene" uid="uid://db3wqf71m7ltl" path="res://psychescan/texts/tutorialText.tscn" id="4_3a23i"]
+[ext_resource type="AudioStream" uid="uid://dochntbp3o3hf" path="res://psychescan/assets/audio/CRTHum.mp3" id="6_t74o7"]
+
+[node name="background" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="main" type="Polygon2D" parent="."]
+scale = Vector2(1.55089, 2.10742)
+texture = ExtResource("1_l6nf8")
+texture_scale = Vector2(2.67, 3.7)
+polygon = PackedVector2Array(0, 0, 0, 0, 1120, 0, 1120, 512, 0, 512)
+
+[node name="Label" parent="." instance=ExtResource("4_3a23i")]
+offset_left = 1184.0
+offset_top = 160.0
+offset_right = 1440.0
+offset_bottom = 582.0
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="CRTHumBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_t74o7")
+volume_db = -4.0
+autoplay = true
+parameters/looping = false

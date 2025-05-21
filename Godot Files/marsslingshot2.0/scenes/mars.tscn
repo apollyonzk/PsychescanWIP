@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgxqsrrr3uyoh"]
+
+[ext_resource type="Script" path="res://marsslingshot2.0/scripts/mars.gd" id="1_gtiou"]
+[ext_resource type="Texture2D" uid="uid://dsx2pr6ebamps" path="res://marsslingshot2.0/assets/R.png" id="2_cktq1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oiufe"]
+radius = 582.278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0l4m"]
+radius = 42.0119
+
+[node name="mars" type="StaticBody2D"]
+script = ExtResource("1_gtiou")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0766602, 0.0742187)
+texture = ExtResource("2_cktq1")
+
+[node name="Area2D" type="Area2D" parent="."]
+priority = 1
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 10.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 313.075
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_oiufe")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_x0l4m")
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

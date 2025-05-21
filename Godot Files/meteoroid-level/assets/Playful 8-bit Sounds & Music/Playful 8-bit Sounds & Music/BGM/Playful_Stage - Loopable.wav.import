@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dm3mfg2nr387p"
+path="res://.godot/imported/Playful_Stage - Loopable.wav-4aece3c84c5c288cf3e7208b81f31ad7.sample"
+
+[deps]
+
+source_file="res://meteoroid-level/assets/Playful 8-bit Sounds & Music/Playful 8-bit Sounds & Music/BGM/Playful_Stage - Loopable.wav"
+dest_files=["res://.godot/imported/Playful_Stage - Loopable.wav-4aece3c84c5c288cf3e7208b81f31ad7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

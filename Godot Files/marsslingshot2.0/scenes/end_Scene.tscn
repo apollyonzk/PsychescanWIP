@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://p01p66mdjehf"]
+
+[ext_resource type="Script" path="res://marsslingshot2.0/script/end_scene.gd" id="1_5io1a"]
+[ext_resource type="Texture2D" uid="uid://bhs0ax7ixtnju" path="res://Globals/consoleBackgroundLarge.png" id="2_lpnx0"]
+[ext_resource type="Shader" path="res://psychescan/addons/CRTVisual.gdshader" id="3_pmy36"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5xom"]
+shader = ExtResource("3_pmy36")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 25.0
+shader_parameter/roll_variation = 0.581
+shader_parameter/distort_intensity = 0.0
+shader_parameter/aberration = 4.75e-08
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5io1a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(267, 33)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(300, 70)
+scale = Vector2(0.658288, 0.658288)
+texture = ExtResource("2_lpnx0")
+
+[node name="CRTShader" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_q5xom")
+position = Vector2(-1027, -675)
+scale = Vector2(2.84442, 2.27598)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(150, 135, 159, 112, 183, 98, 546, 98, 570, 114, 587, 145, 587, 437, 577, 461, 563, 475, 186, 475, 167, 454, 153, 423)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -518.0
+offset_top = -84.0
+offset_right = 519.0
+offset_bottom = 64.0
+text = "Great work! The Psyche Mission is using the sling shot maneuver.
+ This maneuver is used to set trajectory and speed using minimal fuel. The Psyche Mission uses mars as a gravitational assist.
+This allows the spacecraft to speed up, slow down and change course."
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

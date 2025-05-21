@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch63oavybuyab"]
+
+[ext_resource type="Script" path="res://marsslingshot2.0/scripts/label.gd" id="1_wd4mv"]
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_wd4mv")

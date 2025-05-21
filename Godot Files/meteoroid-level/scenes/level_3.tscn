@@ -1,0 +1,240 @@
+[gd_scene load_steps=19 format=4 uid="uid://cpb4weio1jo3a"]
+
+[ext_resource type="Script" path="res://meteoroid-level/scripts/level_3.gd" id="1_sjbbj"]
+[ext_resource type="PackedScene" uid="uid://dmvpevcgrtlss" path="res://meteoroid-level/scenes/shuttle.tscn" id="2_g3yd7"]
+[ext_resource type="FontFile" uid="uid://dcl8xnrcpum3w" path="res://fonts/dogicapixel.ttf" id="6_on2cv"]
+[ext_resource type="Texture2D" uid="uid://c7axgunm3r5sn" path="res://meteoroid-level/assets/meteoroid-level-border-background.png" id="6_on056"]
+[ext_resource type="PackedScene" uid="uid://cuojpnqpbf5v4" path="res://meteoroid-level/scenes/moving_debris.tscn" id="7_6q36i"]
+[ext_resource type="PackedScene" uid="uid://v3uha6yq4pj7" path="res://meteoroid-level/scenes/non_moving_debris.tscn" id="8_8knv3"]
+[ext_resource type="Texture2D" uid="uid://cl5u0rtjqn40a" path="res://meteoroid-level/assets/meteoroid-level-background.png" id="8_oj34l"]
+[ext_resource type="PackedScene" uid="uid://bsd8tu0gnjycp" path="res://meteoroid-level/scenes/path.tscn" id="9_xg24a"]
+[ext_resource type="AudioStream" uid="uid://vpcpryt2w237" path="res://meteoroid-level/assets/Playful 8-bit Sounds & Music/Playful 8-bit Sounds & Music/SFX/Playful_Hit.wav" id="11_wph22"]
+[ext_resource type="AudioStream" uid="uid://dwpjb3ecvcyvi" path="res://meteoroid-level/assets/Playful 8-bit Sounds & Music/Playful 8-bit Sounds & Music/SFX/Playful_LevelUp.wav" id="12_fb8d6"]
+[ext_resource type="FontFile" uid="uid://cb83sko7purs8" path="res://meteoroid-level/assets/dogicapixel.ttf" id="12_ka47n"]
+[ext_resource type="Script" path="res://meteoroid-level/scripts/num_moves.gd" id="13_66gnw"]
+[ext_resource type="Texture2D" uid="uid://c6yulvmw7nl5" path="res://Globals/consoleBackgroundLarge.png" id="13_t7t6d"]
+[ext_resource type="Shader" path="res://psychescan/addons/CRTVisual.gdshader" id="14_p7ltc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6cvpg"]
+texture = ExtResource("6_on056")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5w5h"]
+texture = ExtResource("8_oj34l")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_iay3o"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/3 = SubResource("TileSetAtlasSource_6cvpg")
+sources/5 = SubResource("TileSetAtlasSource_t5w5h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyjl0"]
+shader = ExtResource("14_p7ltc")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 25.0
+shader_parameter/roll_variation = 0.581
+shader_parameter/distort_intensity = 0.0
+shader_parameter/aberration = 4.75e-08
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_sjbbj")
+
+[node name="Shuttle" parent="." instance=ExtResource("2_g3yd7")]
+z_index = 1
+position = Vector2(-618, -60)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(0.75, 0.75)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD7////AwAAAAAAAAD9////AwAAAAAAAAD+////AwAAAAAAAAD/////AwAAAAAAAAAAAPz/BQAAAAAAAAAAAP3/BQAAAAAAAAAAAP7/BQAAAAAAAAAAAP//BQAAAAAAAAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAAAAAAAAAAAPv/BQAAAAAAAAAAAAMABQAAAAAAAAABAPv/BQAAAAAAAAACAPv/BQAAAAAAAAADAPv/BQAAAAAAAAAEAPv/BQAAAAAAAAAFAPv/BQAAAAAAAAAGAPv/BQAAAAAAAAABAAMABQAAAAAAAAACAAMABQAAAAAAAAADAAMABQAAAAAAAAAEAAMABQAAAAAAAAAFAAMABQAAAAAAAAAGAAMABQAAAAAAAAAHAAMABQAAAAAAAAAIAAMABQAAAAAAAAAIAPv/BQAAAAAAAAAHAPv/BQAAAAAAAAABAP3/BQAAAAAAAAAFAP3/BQAAAAAAAAAHAP3/BQAAAAAAAAAIAP3/BQAAAAAAAAABAP//BQAAAAAAAAACAP//BQAAAAAAAAADAP//BQAAAAAAAAAEAP//BQAAAAAAAAAFAP//BQAAAAAAAAAGAP//BQAAAAAAAAAHAP//BQAAAAAAAAAIAP//BQAAAAAAAAABAAEABQAAAAAAAAACAAEABQAAAAAAAAADAAEABQAAAAAAAAAEAAEABQAAAAAAAAAFAAEABQAAAAAAAAAGAAEABQAAAAAAAAAHAAEABQAAAAAAAAAIAAEABQAAAAAAAAADAP3/BQAAAAAAAAD8////AwAAAAAAAAAEAP3/BQAAAAAAAAAGAP3/BQAAAAAAAAACAP3/BQAAAAAAAAABAPz/BQAAAAAAAAACAPz/BQAAAAAAAAADAPz/BQAAAAAAAAAEAPz/BQAAAAAAAAAFAPz/BQAAAAAAAAAGAPz/BQAAAAAAAAAHAPz/BQAAAAAAAAAIAPz/BQAAAAAAAAAIAP7/BQAAAAAAAAAHAP7/BQAAAAAAAAAGAP7/BQAAAAAAAAAFAP7/BQAAAAAAAAAEAP7/BQAAAAAAAAADAP7/BQAAAAAAAAACAP7/BQAAAAAAAAABAP7/BQAAAAAAAAABAAAABQAAAAAAAAACAAAABQAAAAAAAAADAAAABQAAAAAAAAAEAAAABQAAAAAAAAAFAAAABQAAAAAAAAAGAAAABQAAAAAAAAAHAAAABQAAAAAAAAAIAAAABQAAAAAAAAAIAAIABQAAAAAAAAAHAAIABQAAAAAAAAAGAAIABQAAAAAAAAAFAAIABQAAAAAAAAAEAAIABQAAAAAAAAADAAIABQAAAAAAAAACAAIABQAAAAAAAAABAAIABQAAAAAAAAD///r/AwAAAAAAAAAAAPr/AwAAAAAAAAABAPr/AwAAAAAAAAACAPr/AwAAAAAAAAADAPr/AwAAAAAAAAAEAPr/AwAAAAAAAAAFAPr/AwAAAAAAAAAGAPr/AwAAAAAAAAAHAPr/AwAAAAAAAAAIAPr/AwAAAAAAAAAJAPr/AwAAAAAAAAAJAPv/AwAAAAAAAAAJAPz/AwAAAAAAAAAJAP3/AwAAAAAAAAAJAP7/AwAAAAAAAAAJAP//AwAAAAAAAAAJAAAAAwAAAAAAAAAJAAEAAwAAAAAAAAAJAAIAAwAAAAAAAAAJAAMAAwAAAAAAAAAJAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAHAAQAAwAAAAAAAAAGAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAAEAAQAAwAAAAAAAAADAAQAAwAAAAAAAAACAAQAAwAAAAAAAAABAAQAAwAAAAAAAAAAAAQAAwAAAAAAAAD//wQAAwAAAAAAAAD//wMAAwAAAAAAAAD//wIAAwAAAAAAAAD//wEAAwAAAAAAAAD//wAAAwAAAAAAAAD///7/AwAAAAAAAAD///3/AwAAAAAAAAD///z/AwAAAAAAAAD///v/AwAAAAAAAAD+//r/AwAAAAAAAAD9//r/AwAAAAAAAAD8//r/AwAAAAAAAAD7//r/AwAAAAAAAAD7//v/AwAAAAAAAAD7//z/AwAAAAAAAAD7//3/AwAAAAAAAAD6//3/AwAAAAAAAAD6//7/AwAAAAAAAAD6////AwAAAAAAAAD6/wAAAwAAAAAAAAD7/wAAAwAAAAAAAAD7//7/AwAAAAAAAAD6//z/AwAAAAAAAAD6//v/AwAAAAAAAAD6//r/AwAAAAAAAAD8//v/AwAAAAAAAAD9//v/AwAAAAAAAAD+//v/AwAAAAAAAAD+//z/AwAAAAAAAAD9//z/AwAAAAAAAAD8//z/AwAAAAAAAAD8//3/AwAAAAAAAAD9//3/AwAAAAAAAAD+//3/AwAAAAAAAAD+//7/AwAAAAAAAAD9//7/AwAAAAAAAAD8//7/AwAAAAAAAAD8/wAAAwAAAAAAAAD9/wAAAwAAAAAAAAD+/wAAAwAAAAAAAAD+/wEAAwAAAAAAAAD+/wIAAwAAAAAAAAD+/wMAAwAAAAAAAAD+/wQAAwAAAAAAAAD9/wQAAwAAAAAAAAD8/wQAAwAAAAAAAAD7/wQAAwAAAAAAAAD6/wQAAwAAAAAAAAD6/wMAAwAAAAAAAAD6/wIAAwAAAAAAAAD6/wEAAwAAAAAAAAD7/wEAAwAAAAAAAAD8/wEAAwAAAAAAAAD9/wEAAwAAAAAAAAD9/wIAAwAAAAAAAAD9/wMAAwAAAAAAAAD8/wMAAwAAAAAAAAD8/wIAAwAAAAAAAAD7/wIAAwAAAAAAAAD7/wMAAwAAAAAAAAAJAAUAAwAAAAAAAAAJAAYAAwAAAAAAAAAIAAYAAwAAAAAAAAAHAAYAAwAAAAAAAAAGAAYAAwAAAAAAAAAFAAYAAwAAAAAAAAAEAAYAAwAAAAAAAAADAAYAAwAAAAAAAAACAAYAAwAAAAAAAAABAAYAAwAAAAAAAAAAAAYAAwAAAAAAAAD//wYAAwAAAAAAAAD+/wYAAwAAAAAAAAD9/wYAAwAAAAAAAAD8/wYAAwAAAAAAAAD7/wYAAwAAAAAAAAD6/wYAAwAAAAAAAAD5/wYAAwAAAAAAAAD4/wYAAwAAAAAAAAD3/wYAAwAAAAAAAAD2/wYAAwAAAAAAAAD1/wYAAwAAAAAAAAD1/wUAAwAAAAAAAAD1/wQAAwAAAAAAAAD1/wMAAwAAAAAAAAD1/wIAAwAAAAAAAAD1/wEAAwAAAAAAAAD2/wEAAwAAAAAAAAD2/wAAAwAAAAAAAAD2////AwAAAAAAAAD2//7/AwAAAAAAAAD1//7/AwAAAAAAAAD1//3/AwAAAAAAAAD1//z/AwAAAAAAAAD1//v/AwAAAAAAAAD1//r/AwAAAAAAAAD2//r/AwAAAAAAAAD3//r/AwAAAAAAAAD4//r/AwAAAAAAAAD5//r/AwAAAAAAAAD5//v/AwAAAAAAAAD4//z/AwAAAAAAAAD4//v/AwAAAAAAAAD3//v/AwAAAAAAAAD2//v/AwAAAAAAAAD1////AwAAAAAAAAD1/wAAAwAAAAAAAAD2//3/AwAAAAAAAAD2//z/AwAAAAAAAAD3//z/AwAAAAAAAAD5//z/AwAAAAAAAAD5//3/AwAAAAAAAAD4//3/AwAAAAAAAAD4//7/AwAAAAAAAAD3//3/AwAAAAAAAAD5//7/AwAAAAAAAAD5////AwAAAAAAAAD4////AwAAAAAAAAD3//7/AwAAAAAAAAD3////AwAAAAAAAAD3/wAAAwAAAAAAAAD4/wAAAwAAAAAAAAD5/wAAAwAAAAAAAAD5/wEAAwAAAAAAAAD4/wEAAwAAAAAAAAD3/wEAAwAAAAAAAAD2/wIAAwAAAAAAAAD3/wIAAwAAAAAAAAD4/wIAAwAAAAAAAAD5/wIAAwAAAAAAAAD5/wMAAwAAAAAAAAD4/wMAAwAAAAAAAAD3/wMAAwAAAAAAAAD2/wMAAwAAAAAAAAD2/wQAAwAAAAAAAAD3/wQAAwAAAAAAAAD4/wQAAwAAAAAAAAD5/wQAAwAAAAAAAAD2/wUAAwAAAAAAAAD3/wUAAwAAAAAAAAD4/wUAAwAAAAAAAAD5/wUAAwAAAAAAAAD6/wUAAwAAAAAAAAD7/wUAAwAAAAAAAAD8/wUAAwAAAAAAAAD9/wUAAwAAAAAAAAD+/wUAAwAAAAAAAAD//wUAAwAAAAAAAAAAAAUAAwAAAAAAAAABAAUAAwAAAAAAAAACAAUAAwAAAAAAAAADAAUAAwAAAAAAAAAEAAUAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAHAAUAAwAAAAAAAAAIAAUAAwAAAAAAAADz/wcAAwAAAAAAAADw//b/AwAAAAAAAADx//b/AwAAAAAAAADy//b/AwAAAAAAAADz//b/AwAAAAAAAAD0//b/AwAAAAAAAAD1//b/AwAAAAAAAAD2//b/AwAAAAAAAAD3//b/AwAAAAAAAAD4//b/AwAAAAAAAAD5//b/AwAAAAAAAAD6//b/AwAAAAAAAAD7//b/AwAAAAAAAAD8//b/AwAAAAAAAAD9//b/AwAAAAAAAAD+//b/AwAAAAAAAAD///b/AwAAAAAAAAAAAPb/AwAAAAAAAAABAPb/AwAAAAAAAAACAPb/AwAAAAAAAAADAPb/AwAAAAAAAAAEAPb/AwAAAAAAAAAFAPb/AwAAAAAAAAAGAPb/AwAAAAAAAAAHAPb/AwAAAAAAAAAIAPb/AwAAAAAAAAAJAPb/AwAAAAAAAAAKAPb/AwAAAAAAAAALAPb/AwAAAAAAAAAMAPb/AwAAAAAAAAANAPb/AwAAAAAAAAAOAPb/AwAAAAAAAAAPAPb/AwAAAAAAAAAPAPf/AwAAAAAAAAAPAPj/AwAAAAAAAAAPAPn/AwAAAAAAAAAPAPr/AwAAAAAAAAAPAPv/AwAAAAAAAAAPAPz/AwAAAAAAAAAPAP3/AwAAAAAAAAAPAP7/AwAAAAAAAAAPAP//AwAAAAAAAAAPAAAAAwAAAAAAAAAPAAEAAwAAAAAAAAAPAAIAAwAAAAAAAAAPAAMAAwAAAAAAAAAPAAQAAwAAAAAAAAAPAAUAAwAAAAAAAAAPAAYAAwAAAAAAAAAPAAcAAwAAAAAAAAAPAAgAAwAAAAAAAAAPAAkAAwAAAAAAAAAPAAoAAwAAAAAAAAAOAAoAAwAAAAAAAAANAAoAAwAAAAAAAAAMAAoAAwAAAAAAAAALAAoAAwAAAAAAAAAKAAoAAwAAAAAAAAAJAAoAAwAAAAAAAAAIAAoAAwAAAAAAAAAHAAoAAwAAAAAAAAAGAAoAAwAAAAAAAAAFAAoAAwAAAAAAAAAEAAoAAwAAAAAAAAADAAoAAwAAAAAAAAACAAoAAwAAAAAAAAABAAoAAwAAAAAAAAAAAAoAAwAAAAAAAAD//woAAwAAAAAAAAD+/woAAwAAAAAAAAD9/woAAwAAAAAAAAD8/woAAwAAAAAAAAD7/woAAwAAAAAAAAD6/woAAwAAAAAAAAD5/woAAwAAAAAAAAD4/woAAwAAAAAAAAD3/woAAwAAAAAAAAD2/woAAwAAAAAAAAD1/woAAwAAAAAAAAD0/woAAwAAAAAAAADz/woAAwAAAAAAAADy/woAAwAAAAAAAADx/woAAwAAAAAAAADw/woAAwAAAAAAAADw/wkAAwAAAAAAAADw/wgAAwAAAAAAAADw/wcAAwAAAAAAAADw/wYAAwAAAAAAAADw/wUAAwAAAAAAAADw/wQAAwAAAAAAAADw/wMAAwAAAAAAAADw/wIAAwAAAAAAAADw/wEAAwAAAAAAAADw/wAAAwAAAAAAAADw////AwAAAAAAAADw//7/AwAAAAAAAADw//3/AwAAAAAAAADw//z/AwAAAAAAAADw//v/AwAAAAAAAADw//r/AwAAAAAAAADw//n/AwAAAAAAAADw//j/AwAAAAAAAADw//f/AwAAAAAAAAD0/wgAAwAAAAAAAAD0/wcAAwAAAAAAAAD0/wYAAwAAAAAAAAD0/wUAAwAAAAAAAAD0/wQAAwAAAAAAAAD0/wMAAwAAAAAAAAD0/wIAAwAAAAAAAAD0/wEAAwAAAAAAAAD0/wAAAwAAAAAAAAD0////AwAAAAAAAAD0//7/AwAAAAAAAAD0//3/AwAAAAAAAAD0//z/AwAAAAAAAAD0//v/AwAAAAAAAAD0//r/AwAAAAAAAAD0//n/AwAAAAAAAAD0//j/AwAAAAAAAAD0//f/AwAAAAAAAADz//f/AwAAAAAAAADy//f/AwAAAAAAAADx//f/AwAAAAAAAADx//j/AwAAAAAAAADx//n/AwAAAAAAAADx//r/AwAAAAAAAADx//v/AwAAAAAAAADx//z/AwAAAAAAAADx//3/AwAAAAAAAADx//7/AwAAAAAAAADx////AwAAAAAAAADx/wAAAwAAAAAAAADx/wEAAwAAAAAAAADx/wIAAwAAAAAAAADx/wMAAwAAAAAAAADx/wQAAwAAAAAAAADx/wUAAwAAAAAAAADx/wYAAwAAAAAAAADx/wcAAwAAAAAAAADx/wgAAwAAAAAAAADx/wkAAwAAAAAAAADy/wkAAwAAAAAAAADy/wgAAwAAAAAAAADy/wcAAwAAAAAAAADy/wYAAwAAAAAAAADy/wUAAwAAAAAAAADy/wQAAwAAAAAAAADy/wMAAwAAAAAAAADy/wIAAwAAAAAAAADy/wEAAwAAAAAAAADy/wAAAwAAAAAAAADy////AwAAAAAAAADy//7/AwAAAAAAAADy//3/AwAAAAAAAADy//z/AwAAAAAAAADy//v/AwAAAAAAAADy//r/AwAAAAAAAADy//n/AwAAAAAAAADy//j/AwAAAAAAAADz//j/AwAAAAAAAADz//n/AwAAAAAAAADz//r/AwAAAAAAAADz//v/AwAAAAAAAADz//z/AwAAAAAAAADz//3/AwAAAAAAAADz//7/AwAAAAAAAADz////AwAAAAAAAADz/wAAAwAAAAAAAADz/wEAAwAAAAAAAADz/wIAAwAAAAAAAADz/wMAAwAAAAAAAADz/wQAAwAAAAAAAADz/wUAAwAAAAAAAADz/wYAAwAAAAAAAADz/wgAAwAAAAAAAADz/wkAAwAAAAAAAAD0/wkAAwAAAAAAAAD1/wkAAwAAAAAAAAD1/wgAAwAAAAAAAAD1/wcAAwAAAAAAAAD2/wcAAwAAAAAAAAD2/wgAAwAAAAAAAAD2/wkAAwAAAAAAAAD3/wkAAwAAAAAAAAD3/wgAAwAAAAAAAAD3/wcAAwAAAAAAAAD4/wcAAwAAAAAAAAD4/wgAAwAAAAAAAAD4/wkAAwAAAAAAAAD5/wkAAwAAAAAAAAD5/wgAAwAAAAAAAAD5/wcAAwAAAAAAAAD6/wcAAwAAAAAAAAD6/wgAAwAAAAAAAAD6/wkAAwAAAAAAAAD7/wkAAwAAAAAAAAD7/wgAAwAAAAAAAAD7/wcAAwAAAAAAAAD8/wcAAwAAAAAAAAD8/wgAAwAAAAAAAAD8/wkAAwAAAAAAAAD9/wkAAwAAAAAAAAD9/wgAAwAAAAAAAAD9/wcAAwAAAAAAAAD+/wcAAwAAAAAAAAD+/wgAAwAAAAAAAAD+/wkAAwAAAAAAAAD//wkAAwAAAAAAAAD//wgAAwAAAAAAAAD//wcAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAkAAwAAAAAAAAABAAkAAwAAAAAAAAABAAgAAwAAAAAAAAABAAcAAwAAAAAAAAACAAcAAwAAAAAAAAACAAgAAwAAAAAAAAACAAkAAwAAAAAAAAADAAkAAwAAAAAAAAADAAgAAwAAAAAAAAADAAcAAwAAAAAAAAAEAAcAAwAAAAAAAAAEAAgAAwAAAAAAAAAEAAkAAwAAAAAAAAAFAAkAAwAAAAAAAAAFAAgAAwAAAAAAAAAFAAcAAwAAAAAAAAAGAAcAAwAAAAAAAAAGAAgAAwAAAAAAAAAGAAkAAwAAAAAAAAAHAAkAAwAAAAAAAAAHAAgAAwAAAAAAAAAHAAcAAwAAAAAAAAAIAAcAAwAAAAAAAAAIAAgAAwAAAAAAAAAIAAkAAwAAAAAAAAAJAAkAAwAAAAAAAAAJAAgAAwAAAAAAAAAJAAcAAwAAAAAAAAAKAAcAAwAAAAAAAAAKAAYAAwAAAAAAAAAKAAUAAwAAAAAAAAAKAAQAAwAAAAAAAAAKAAMAAwAAAAAAAAAKAAIAAwAAAAAAAAAKAAEAAwAAAAAAAAAKAAAAAwAAAAAAAAAKAP//AwAAAAAAAAAKAP7/AwAAAAAAAAAKAP3/AwAAAAAAAAAKAPz/AwAAAAAAAAAKAPv/AwAAAAAAAAAKAPr/AwAAAAAAAAAKAPn/AwAAAAAAAAAKAPj/AwAAAAAAAAAKAPf/AwAAAAAAAAAJAPf/AwAAAAAAAAAIAPf/AwAAAAAAAAAHAPf/AwAAAAAAAAAGAPf/AwAAAAAAAAAFAPf/AwAAAAAAAAAEAPf/AwAAAAAAAAADAPf/AwAAAAAAAAACAPf/AwAAAAAAAAABAPf/AwAAAAAAAAAAAPf/AwAAAAAAAAD///f/AwAAAAAAAAD+//f/AwAAAAAAAAD9//f/AwAAAAAAAAD8//f/AwAAAAAAAAD7//f/AwAAAAAAAAD6//f/AwAAAAAAAAD5//f/AwAAAAAAAAD4//f/AwAAAAAAAAD3//f/AwAAAAAAAAD2//f/AwAAAAAAAAD1//f/AwAAAAAAAAD1//j/AwAAAAAAAAD1//n/AwAAAAAAAAD2//n/AwAAAAAAAAD2//j/AwAAAAAAAAD3//j/AwAAAAAAAAD3//n/AwAAAAAAAAD4//n/AwAAAAAAAAD4//j/AwAAAAAAAAD5//j/AwAAAAAAAAD5//n/AwAAAAAAAAD6//n/AwAAAAAAAAD6//j/AwAAAAAAAAD7//j/AwAAAAAAAAD7//n/AwAAAAAAAAD8//n/AwAAAAAAAAD8//j/AwAAAAAAAAD9//j/AwAAAAAAAAD9//n/AwAAAAAAAAD+//n/AwAAAAAAAAD+//j/AwAAAAAAAAD///j/AwAAAAAAAAD///n/AwAAAAAAAAAAAPn/AwAAAAAAAAAAAPj/AwAAAAAAAAABAPj/AwAAAAAAAAABAPn/AwAAAAAAAAACAPn/AwAAAAAAAAACAPj/AwAAAAAAAAADAPj/AwAAAAAAAAADAPn/AwAAAAAAAAAEAPn/AwAAAAAAAAAEAPj/AwAAAAAAAAAFAPj/AwAAAAAAAAAFAPn/AwAAAAAAAAAGAPn/AwAAAAAAAAAGAPj/AwAAAAAAAAAHAPj/AwAAAAAAAAAHAPn/AwAAAAAAAAAIAPn/AwAAAAAAAAAIAPj/AwAAAAAAAAAJAPj/AwAAAAAAAAAJAPn/AwAAAAAAAAALAPf/AwAAAAAAAAALAPj/AwAAAAAAAAALAPn/AwAAAAAAAAALAPr/AwAAAAAAAAALAPv/AwAAAAAAAAALAPz/AwAAAAAAAAALAP3/AwAAAAAAAAALAP7/AwAAAAAAAAALAP//AwAAAAAAAAALAAAAAwAAAAAAAAALAAEAAwAAAAAAAAALAAIAAwAAAAAAAAALAAMAAwAAAAAAAAALAAQAAwAAAAAAAAALAAUAAwAAAAAAAAALAAYAAwAAAAAAAAALAAcAAwAAAAAAAAALAAgAAwAAAAAAAAAKAAgAAwAAAAAAAAAKAAkAAwAAAAAAAAALAAkAAwAAAAAAAAAMAAkAAwAAAAAAAAAMAAgAAwAAAAAAAAAMAAcAAwAAAAAAAAAMAAYAAwAAAAAAAAAMAAUAAwAAAAAAAAAMAAQAAwAAAAAAAAAMAAMAAwAAAAAAAAAMAAIAAwAAAAAAAAAMAAEAAwAAAAAAAAAMAAAAAwAAAAAAAAAMAP//AwAAAAAAAAAMAP7/AwAAAAAAAAAMAP3/AwAAAAAAAAAMAPz/AwAAAAAAAAAMAPv/AwAAAAAAAAAMAPr/AwAAAAAAAAAMAPn/AwAAAAAAAAAMAPj/AwAAAAAAAAAMAPf/AwAAAAAAAAANAPf/AwAAAAAAAAANAPj/AwAAAAAAAAANAPn/AwAAAAAAAAANAPr/AwAAAAAAAAANAPv/AwAAAAAAAAANAPz/AwAAAAAAAAANAP3/AwAAAAAAAAANAP7/AwAAAAAAAAANAP//AwAAAAAAAAANAAAAAwAAAAAAAAANAAEAAwAAAAAAAAANAAIAAwAAAAAAAAANAAMAAwAAAAAAAAANAAQAAwAAAAAAAAANAAUAAwAAAAAAAAANAAYAAwAAAAAAAAANAAcAAwAAAAAAAAANAAgAAwAAAAAAAAANAAkAAwAAAAAAAAAOAAkAAwAAAAAAAAAOAAgAAwAAAAAAAAAOAAcAAwAAAAAAAAAOAAYAAwAAAAAAAAAOAAUAAwAAAAAAAAAOAAQAAwAAAAAAAAAOAAMAAwAAAAAAAAAOAAIAAwAAAAAAAAAOAAEAAwAAAAAAAAAOAAAAAwAAAAAAAAAOAP//AwAAAAAAAAAOAP7/AwAAAAAAAAAOAP3/AwAAAAAAAAAOAPz/AwAAAAAAAAAOAPv/AwAAAAAAAAAOAPr/AwAAAAAAAAAOAPn/AwAAAAAAAAAOAPj/AwAAAAAAAAAOAPf/AwAAAAAAAADw/wsAAwAAAAAAAADx/wsAAwAAAAAAAADy/wsAAwAAAAAAAADz/wsAAwAAAAAAAAD0/wsAAwAAAAAAAAD1/wsAAwAAAAAAAAD2/wsAAwAAAAAAAAD3/wsAAwAAAAAAAAD4/wsAAwAAAAAAAAD5/wsAAwAAAAAAAAD6/wsAAwAAAAAAAAD7/wsAAwAAAAAAAAD8/wsAAwAAAAAAAAD9/wsAAwAAAAAAAAD+/wsAAwAAAAAAAAD//wsAAwAAAAAAAAAAAAsAAwAAAAAAAAABAAsAAwAAAAAAAAACAAsAAwAAAAAAAAADAAsAAwAAAAAAAAAEAAsAAwAAAAAAAAAFAAsAAwAAAAAAAAAGAAsAAwAAAAAAAAAHAAsAAwAAAAAAAAAIAAsAAwAAAAAAAAAJAAsAAwAAAAAAAAAKAAsAAwAAAAAAAAALAAsAAwAAAAAAAAAMAAsAAwAAAAAAAAANAAsAAwAAAAAAAAAOAAsAAwAAAAAAAAAPAAsAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_iay3o")
+
+[node name="ControlsMessage" type="Label" parent="."]
+top_level = true
+z_index = 1
+offset_left = 1536.0
+offset_top = -666.0
+offset_right = 2254.0
+offset_bottom = -327.0
+theme_override_fonts/font = ExtResource("6_on2cv")
+theme_override_font_sizes/font_size = 40
+text = "Arrows for 
+
+direction,
+
+Backspace/ESC
+
+to undo,
+
+Enter to confirm"
+autowrap_mode = 2
+
+[node name="InstructionsMessage" type="Label" parent="."]
+top_level = true
+z_index = 1
+offset_left = 1543.0
+offset_top = -203.0
+offset_right = 2067.0
+offset_bottom = 208.0
+theme_override_constants/line_spacing = 30
+theme_override_fonts/font = ExtResource("6_on2cv")
+theme_override_font_sizes/font_size = 42
+text = "Plan out the 
+course to avoid the obstacles! Reach the glowing tile to proceed."
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+top_level = true
+visibility_layer = 2
+offset_left = -2046.0
+offset_top = -1276.0
+offset_right = 2756.0
+offset_bottom = 1416.0
+color = Color(0, 1, 0, 0)
+
+[node name="TargetHighlight" type="ColorRect" parent="."]
+top_level = true
+visibility_layer = 2
+offset_left = 1023.0
+offset_top = -128.0
+offset_right = 1153.0
+offset_bottom = -1.0
+color = Color(0.778561, 0.843608, 0.835762, 0)
+
+[node name="LoseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_wph22")
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_fb8d6")
+volume_db = -10.0
+
+[node name="Debris" type="Node" parent="."]
+
+[node name="Meteoroid" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(841, 214)
+
+[node name="Meteoroid2" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(1100, 460)
+
+[node name="Meteoroid4" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(1097, -304)
+
+[node name="Meteoroid5" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(843, -560)
+
+[node name="Meteoroid7" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(584, -560)
+
+[node name="Meteoroid10" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(200, -48)
+
+[node name="Meteoroid13" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(328, -440)
+
+[node name="Meteoroid14" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(456, -304)
+
+[node name="Meteoroid16" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(1096, -48)
+
+[node name="Meteoroid17" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(968, -176)
+
+[node name="Meteoroid19" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(709, 66)
+
+[node name="Meteoroid20" parent="Debris" instance=ExtResource("7_6q36i")]
+position = Vector2(200, 336)
+
+[node name="Non-moving Debris" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(517, -380)
+
+[node name="Non-moving Debris2" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(264, 517)
+
+[node name="Non-moving Debris3" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(520, 389)
+
+[node name="Non-moving Debris4" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(773, -123)
+
+[node name="Non-moving Debris5" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(903, 127)
+
+[node name="Non-moving Debris6" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(1027, 135)
+
+[node name="Non-moving Debris7" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(265, 0)
+
+[node name="Non-moving Debris8" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(517, 5)
+
+[node name="Non-moving Debris9" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(645, -250)
+
+[node name="Non-moving Debris10" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(263, 258)
+
+[node name="Non-moving Debris11" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(773, 520)
+
+[node name="Non-moving Debris12" parent="Debris" instance=ExtResource("8_8knv3")]
+position = Vector2(6, -256)
+
+[node name="Path" parent="." instance=ExtResource("9_xg24a")]
+
+[node name="ConsoleBackgroundLarge" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1008, 43)
+texture = ExtResource("13_t7t6d")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(911, -28)
+
+[node name="NumMoves" type="Label" parent="."]
+offset_left = -213.0
+offset_top = -586.0
+offset_right = -32.0
+offset_bottom = -349.0
+theme_override_constants/line_spacing = 30
+theme_override_fonts/font = ExtResource("12_ka47n")
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("13_66gnw")
+
+[node name="CRTShader" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_pyjl0")
+position = Vector2(-854, -1005)
+scale = Vector2(3.84383, 3.22281)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(150, 135, 159, 112, 183, 98, 546, 98, 570, 114, 587, 145, 587, 437, 577, 461, 563, 475, 186, 475, 167, 454, 153, 423, 149.415, 275.925)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

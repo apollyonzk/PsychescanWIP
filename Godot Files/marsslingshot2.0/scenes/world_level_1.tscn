@@ -1,0 +1,127 @@
+[gd_scene load_steps=16 format=3 uid="uid://c1fg6c0a58tq7"]
+
+[ext_resource type="Script" path="res://marsslingshot2.0/scripts/world_level_1.gd" id="1_reier"]
+[ext_resource type="Shader" path="res://psychescan/addons/StarScroll.gdshader" id="2_il4nj"]
+[ext_resource type="PackedScene" uid="uid://crxhvmr5p37e5" path="res://marsslingshot2.0/scenes/space_ship.tscn" id="2_w6gui"]
+[ext_resource type="Texture2D" uid="uid://ccwew2bdn7jnn" path="res://psychescan/assets/textures/meteoroid-level-border-background.png" id="3_4ynbv"]
+[ext_resource type="PackedScene" uid="uid://ch63oavybuyab" path="res://marsslingshot2.0/scenes/label.tscn" id="3_dw70b"]
+[ext_resource type="Script" path="res://marsslingshot2.0/script/color_rect.gd" id="4_31rtf"]
+[ext_resource type="Script" path="res://marsslingshot2.0/scripts/label_2.gd" id="5_gxfap"]
+[ext_resource type="Script" path="res://marsslingshot2.0/scripts/checkpoint.gd" id="6_7f8ea"]
+[ext_resource type="Texture2D" uid="uid://dsx2pr6ebamps" path="res://marsslingshot2.0/assets/R.png" id="7_kwl6x"]
+[ext_resource type="Texture2D" uid="uid://d3i5uhv7cwp4o" path="res://Globals/consoleBackgroundLarge.png" id="8_q0ehg"]
+[ext_resource type="Shader" path="res://psychescan/addons/CRTVisual.gdshader" id="11_7oayv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1g2h8"]
+shader = ExtResource("2_il4nj")
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd74w"]
+size = Vector2(1152, 786)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6w0av"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hhx2"]
+shader = ExtResource("11_7oayv")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 25.0
+shader_parameter/roll_variation = 0.581
+shader_parameter/distort_intensity = 0.0
+shader_parameter/aberration = 4.75e-08
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="WorldLevel1" type="Node2D"]
+script = ExtResource("1_reier")
+
+[node name="StarBackground" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1g2h8")
+position = Vector2(461, 446)
+scale = Vector2(4.74709, 5.56027)
+texture = ExtResource("3_4ynbv")
+region_enabled = true
+region_rect = Rect2(0, 0, 688.5, 365.25)
+
+[node name="space_ship" parent="." instance=ExtResource("2_w6gui")]
+position = Vector2(134, 550)
+
+[node name="Timer" parent="space_ship" index="3"]
+one_shot = false
+
+[node name="Label" parent="." instance=ExtResource("3_dw70b")]
+offset_left = 112.0
+offset_top = 583.0
+offset_right = 152.0
+offset_bottom = 606.0
+script = null
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(575, 326)
+shape = SubResource("RectangleShape2D_cd74w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2.0
+offset_top = 624.0
+offset_right = 25.0
+offset_bottom = 648.0
+script = ExtResource("4_31rtf")
+
+[node name="Label2" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("5_gxfap")
+
+[node name="checkpoint" type="StaticBody2D" parent="."]
+script = ExtResource("6_7f8ea")
+
+[node name="Area2D" type="Area2D" parent="checkpoint"]
+position = Vector2(1000, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint/Area2D"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_6w0av")
+
+[node name="Sprite2D" type="Sprite2D" parent="checkpoint"]
+position = Vector2(1000.56, 51.5)
+scale = Vector2(0.0577342, 0.0577342)
+texture = ExtResource("7_kwl6x")
+
+[node name="CRTShader" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_6hhx2")
+position = Vector2(-442, -322)
+scale = Vector2(2.84442, 2.27598)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(150, 135, 159, 112, 183, 98, 546, 98, 570, 114, 587, 145, 587, 437, 577, 461, 563, 475, 186, 475, 167, 454, 153, 423)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(859, 361)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(892, 398)
+scale = Vector2(0.658288, 0.658288)
+texture = ExtResource("8_q0ehg")
+
+[connection signal="timeout" from="space_ship/Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="checkpoint/Area2D" to="checkpoint" method="_on_area_2d_body_entered"]
+
+[editable path="space_ship"]

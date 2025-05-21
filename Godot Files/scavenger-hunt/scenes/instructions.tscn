@@ -1,0 +1,244 @@
+[gd_scene load_steps=15 format=3 uid="uid://ntavt4fbhu11"]
+
+[ext_resource type="Script" path="res://scavenger-hunt/scripts/instructions.gd" id="1_1keii"]
+[ext_resource type="FontFile" uid="uid://j00rrwigmjoe" path="res://fonts/dogicapixel.ttf" id="1_76ro8"]
+[ext_resource type="Texture2D" uid="uid://btph37eelsbfk" path="res://scavenger-hunt/assets/player/player-1.png" id="2_x1h4f"]
+[ext_resource type="Texture2D" uid="uid://bky5eqgfsc58u" path="res://scavenger-hunt/assets/instructions/psyche1.png" id="6_7pp68"]
+[ext_resource type="PackedScene" uid="uid://d1bu06s83i25f" path="res://audio/audio.tscn" id="10_jcapo"]
+
+[sub_resource type="Animation" id="Animation_5ju3q"]
+resource_name = "cover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b5ovk"]
+resource_name = "cover_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kxlgi"]
+resource_name = "prompt_cover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PromptCover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3pcq4"]
+resource_name = "prompt_cover_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PromptCover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3a4yj"]
+_data = {
+"cover": SubResource("Animation_5ju3q"),
+"cover_fade": SubResource("Animation_b5ovk"),
+"prompt_cover": SubResource("Animation_kxlgi"),
+"prompt_cover_fade": SubResource("Animation_3pcq4")
+}
+
+[sub_resource type="Animation" id="Animation_gkvwe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PsycheCover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tanxi"]
+resource_name = "psyche_cover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PsycheCover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xs2pu"]
+resource_name = "psyche_cover_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PsycheCover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cy874"]
+_data = {
+"RESET": SubResource("Animation_gkvwe"),
+"psyche_cover": SubResource("Animation_tanxi"),
+"psyche_cover_fade": SubResource("Animation_xs2pu")
+}
+
+[node name="Instructions" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 928.0
+offset_bottom = 581.0
+script = ExtResource("1_1keii")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -712.0
+offset_top = -463.0
+offset_right = 2347.0
+offset_bottom = 1485.0
+color = Color(0, 0, 0, 1)
+
+[node name="Prompt" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.166954
+anchor_right = 0.155172
+anchor_bottom = 0.166954
+offset_left = 355.0
+offset_top = 408.0
+offset_right = 645.0
+offset_bottom = 422.0
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = ExtResource("1_76ro8")
+theme_override_font_sizes/font_size = 16
+text = "Press [Enter] or [Space] to continue"
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(213, 285)
+scale = Vector2(12.875, 12.875)
+texture = ExtResource("2_x1h4f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(464, 292)
+zoom = Vector2(3, 3)
+
+[node name="Story" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 645.0
+offset_top = 762.0
+offset_right = 1613.0
+offset_bottom = 937.0
+
+[node name="Label" type="Label" parent="Story"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.702857
+anchor_right = 0.5
+anchor_bottom = 0.702857
+offset_left = -774.0
+offset_top = -757.0
+offset_right = -263.0
+offset_bottom = -482.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 16
+theme_override_fonts/font = ExtResource("1_76ro8")
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Psyche1" type="Sprite2D" parent="."]
+position = Vector2(566, 304)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_7pp68")
+
+[node name="PsycheCover" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 194.0
+offset_right = 695.0
+offset_bottom = 403.0
+color = Color(0, 0, 0, 1)
+
+[node name="Cover" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -176.0
+offset_top = -111.0
+offset_right = 1108.0
+offset_bottom = 651.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="PromptCover" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0193966
+anchor_top = 0.144578
+anchor_right = 0.0215517
+anchor_bottom = 0.144578
+offset_left = 355.0
+offset_top = 361.0
+offset_right = 795.0
+offset_bottom = 461.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3a4yj")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cy874")
+}
+
+[node name="Audio" parent="." instance=ExtResource("10_jcapo")]

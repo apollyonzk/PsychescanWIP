@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://dipu66gwaj7se"]
+
+[ext_resource type="Script" path="res://psychescan/scripts/sparkle.gd" id="1_c0550"]
+[ext_resource type="Texture2D" uid="uid://u3yuxsotbo7c" path="res://psychescan/assets/textures/sparkle_spritesheet.png" id="1_m88ie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du7f2"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(49, 45, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clkky"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(144, 45, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqnen"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(239, 45, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kovfl"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(334, 45, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw32m"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(429, 45, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjwsl"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(524, 45, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwsv1"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(619, 45, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4xl0"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(49, 139, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0dnh"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(144, 139, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_727fc"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(239, 139, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv23v"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(334, 139, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuyhv"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(429, 139, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do1jx"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(524, 139, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfx45"]
+atlas = ExtResource("1_m88ie")
+region = Rect2(619, 139, 95, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ovow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du7f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clkky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqnen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kovfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw32m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjwsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwsv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4xl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0dnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_727fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv23v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuyhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do1jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfx45")
+}],
+"loop": true,
+"name": &"sparkle",
+"speed": 14.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(57, 56)
+scale = Vector2(1.2, 1.52)
+sprite_frames = SubResource("SpriteFrames_7ovow")
+animation = &"sparkle"
+frame_progress = 0.238879
+script = ExtResource("1_c0550")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

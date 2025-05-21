@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfb4cc1is55wv"]
+
+[ext_resource type="FontFile" uid="uid://ccxyuwpsc1qh4" path="res://fonts/dogicapixel.ttf" id="1_if37c"]
+
+[sub_resource type="GDScript" id="GDScript_jgl8i"]
+script/source = "extends Node2D
+
+var correctChars = 0
+var failure = false
+
+const defaultText = \"Missing Text\"
+const failTimer = 1
+var newText
+var info
+var fail = false
+var timer = 0
+var checked = false
+
+@onready var label := $Control/Label
+@onready var labelFail := $Control/Label_Failure
+@onready var labelSucc := $Control/Label_Success
+
+# Backup text is something goes wrong
+func _ready() -> void:
+	newText = defaultText
+	label.text = defaultText
+	labelFail.text = defaultText
+	labelSucc.text = defaultText
+	labelFail.visible = false
+	labelSucc.visible = true
+	labelFail.visible_characters = -1
+	labelSucc.visible_characters = 0
+
+func setText(text):
+	newText = text
+	label.text = text
+	labelFail.text = text
+	labelSucc.text = text
+	
+func setPos(pos):
+	position = pos
+
+func checkDone():
+	if not labelSucc.visible_ratio == 1 or checked:
+		return false
+	checked = true
+	return true
+
+func completed():
+	return checked
+
+func typeChecking(event):
+	if labelSucc.visible_ratio == 1:
+		return
+	var typedEvent = event as InputEventKey
+	var typedKey = PackedByteArray([typedEvent.keycode]).get_string_from_utf8()
+	if newText[correctChars].to_upper() == typedKey:
+		correctChars += 1
+		labelSucc.visible_characters = correctChars
+	else:
+		labelFail.visible = true
+		labelFail.visible_characters = -1
+		fail = true
+		correctChars = 0
+		labelSucc.visible_characters = correctChars
+
+func move(speed):
+	position.x += speed
+
+func rightPoint():
+	return label.get_global_rect().size[0]
+
+func setInformation(information):
+	info = information
+
+func getInfo():
+	return info
+
+func checkFail(delta):
+	if fail:
+		if timer < failTimer:
+			timer += delta
+		else:
+			labelFail.visible = false
+			fail = false
+			timer = 0
+"
+
+[node name="TypingBlock" type="Node2D"]
+script = SubResource("GDScript_jgl8i")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 125.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 132.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("1_if37c")
+theme_override_font_sizes/font_size = 50
+text = "asd"
+vertical_alignment = 1
+
+[node name="Label_Failure" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -62.5
+offset_right = 1.0
+offset_bottom = 6.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_if37c")
+theme_override_font_sizes/font_size = 50
+text = "asd"
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label_Success" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -62.5
+offset_right = 55.0
+offset_bottom = 6.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(3.65794e-06, 0.958302, 0.829638, 1)
+theme_override_fonts/font = ExtResource("1_if37c")
+theme_override_font_sizes/font_size = 50
+text = "asd"
+vertical_alignment = 1
