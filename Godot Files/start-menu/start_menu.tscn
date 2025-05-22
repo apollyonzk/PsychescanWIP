@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://start-menu/start_menu.gd" id="1_wan2u"]
 [ext_resource type="Shader" path="res://meteoroid-level/scripts/start_screen.gdshader" id="2_00tl5"]
-[ext_resource type="FontFile" uid="uid://j00rrwigmjoe" path="res://fonts/dogicapixel.ttf" id="2_1nwy0"]
-[ext_resource type="Texture2D" uid="uid://dblmditqehlrg" path="res://start-menu/assets/meteoroid-level-border-background.png" id="2_wwv1v"]
-[ext_resource type="Texture2D" uid="uid://dl2tbeyachfg7" path="res://start-menu/assets/psyche.png" id="2_yj7n0"]
+[ext_resource type="FontFile" uid="uid://dkfxjce33i1c" path="res://fonts/dogicapixel.ttf" id="2_1nwy0"]
+[ext_resource type="Texture2D" uid="uid://b73guaat05lel" path="res://start-menu/assets/meteoroid-level-border-background.png" id="2_wwv1v"]
+[ext_resource type="Texture2D" uid="uid://d2ugm3uig3tph" path="res://start-menu/assets/psyche.png" id="2_yj7n0"]
 [ext_resource type="StyleBox" uid="uid://jp4ii3x2ixmo" path="res://start-menu/normal.tres" id="3_gymqj"]
-[ext_resource type="Texture2D" uid="uid://b6yr5rpc3ae3f" path="res://Globals/icon.png" id="4_s3a8p"]
+[ext_resource type="Texture2D" uid="uid://bdxmxn32woi4p" path="res://Globals/icon.png" id="4_s3a8p"]
 [ext_resource type="PackedScene" uid="uid://d1bu06s83i25f" path="res://audio/audio.tscn" id="5_44oyq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uixfc"]
@@ -88,6 +88,33 @@ bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yr5en"]
 bg_color = Color(0.172833, 0.172833, 0.172833, 1)
 
+[sub_resource type="Animation" id="Animation_wxxp8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Psyche:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1540.5, -343)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Psyche:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.61799]
+}
+
 [sub_resource type="Animation" id="Animation_hy8bh"]
 resource_name = "cover"
 tracks/0/type = "value"
@@ -145,33 +172,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 1.91986, 3.83972, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_wxxp8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Psyche:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1540.5, -343)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Psyche:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.61799]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iqgaj"]

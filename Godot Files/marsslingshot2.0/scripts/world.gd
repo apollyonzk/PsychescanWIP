@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 func set_label() -> void:
 	number = sqrt($space_ship.velocity.x*$space_ship.velocity.x + $space_ship.velocity.y * $space_ship.velocity.y)
 	$Label.text = str(number).pad_decimals(2)
-	Globals.velocity2 = str(number).pad_decimals(2)
 
 func set_size_colorrect() :
 	$ColorRect.size.x = $space_ship/Timer.get_time_left() * 300

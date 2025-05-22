@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1fg6c0a58tq7"]
+[gd_scene load_steps=15 format=3 uid="uid://c1fg6c0a58tq7"]
 
 [ext_resource type="Script" path="res://marsslingshot2.0/scripts/world_level_1.gd" id="1_reier"]
 [ext_resource type="Shader" path="res://psychescan/addons/StarScroll.gdshader" id="2_il4nj"]
 [ext_resource type="PackedScene" uid="uid://crxhvmr5p37e5" path="res://marsslingshot2.0/scenes/space_ship.tscn" id="2_w6gui"]
 [ext_resource type="Texture2D" uid="uid://ccwew2bdn7jnn" path="res://psychescan/assets/textures/meteoroid-level-border-background.png" id="3_4ynbv"]
 [ext_resource type="PackedScene" uid="uid://ch63oavybuyab" path="res://marsslingshot2.0/scenes/label.tscn" id="3_dw70b"]
-[ext_resource type="Script" path="res://marsslingshot2.0/script/color_rect.gd" id="4_31rtf"]
 [ext_resource type="Script" path="res://marsslingshot2.0/scripts/label_2.gd" id="5_gxfap"]
 [ext_resource type="Script" path="res://marsslingshot2.0/scripts/checkpoint.gd" id="6_7f8ea"]
 [ext_resource type="Texture2D" uid="uid://dsx2pr6ebamps" path="res://marsslingshot2.0/assets/R.png" id="7_kwl6x"]
@@ -82,7 +81,6 @@ offset_left = -2.0
 offset_top = 624.0
 offset_right = 25.0
 offset_bottom = 648.0
-script = ExtResource("4_31rtf")
 
 [node name="Label2" type="Label" parent="."]
 offset_right = 40.0
