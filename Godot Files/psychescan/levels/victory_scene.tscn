@@ -37,6 +37,11 @@ shader_parameter/vignette_opacity = 0.5
 [node name="level" type="Node2D"]
 scale = Vector2(1.268, 1.268)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 102
+position = Vector2(1029.97, 630.126)
+zoom = Vector2(1.071, 1.092)
+
 [node name="StarBackground" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_8emcb")

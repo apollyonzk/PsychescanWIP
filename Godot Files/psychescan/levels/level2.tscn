@@ -43,6 +43,11 @@ size = Vector2(1508.89, 20)
 [node name="level" type="Node2D"]
 scale = Vector2(1.268, 1.268)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 102
+position = Vector2(1029.97, 630.126)
+zoom = Vector2(1.071, 1.092)
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_u5qw6")]
 position = Vector2(277.603, 201.893)
 scale = Vector2(0.9, 0.9)

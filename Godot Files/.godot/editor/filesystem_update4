@@ -1,0 +1,8 @@
+res://launch/scenes/launch.tscn
+res://psychescan/levels/main_level.tscn
+res://psychescan/levels/tutorialLevel.tscn
+res://psychescan/levels/level.tscn
+res://psychescan/levels/level2.tscn
+res://psychescan/levels/level3.tscn
+res://psychescan/levels/victory_scene.tscn
+res://meteoroid-level/scenes/level_1.tscn
