@@ -1,14 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://blb8npkytvcgv"]
+[gd_scene load_steps=15 format=3 uid="uid://blb8npkytvcgv"]
 
 [ext_resource type="Script" path="res://marsslingshot2.0/scripts/world.gd" id="1_iadi5"]
 [ext_resource type="PackedScene" uid="uid://bq03wvh64xhe2" path="res://marsslingshot2.0/scenes/game_area.tscn" id="2_482iq"]
 [ext_resource type="Shader" path="res://psychescan/addons/StarScroll.gdshader" id="2_nlrqi"]
 [ext_resource type="PackedScene" uid="uid://bgxqsrrr3uyoh" path="res://marsslingshot2.0/scenes/mars.tscn" id="3_1ewpu"]
 [ext_resource type="Texture2D" uid="uid://ccwew2bdn7jnn" path="res://psychescan/assets/textures/meteoroid-level-border-background.png" id="3_qxexq"]
-[ext_resource type="PackedScene" uid="uid://cyjtqrvccw1f8" path="res://marsslingshot2.0/scenes/timer.tscn" id="4_g5xfb"]
 [ext_resource type="PackedScene" uid="uid://crxhvmr5p37e5" path="res://marsslingshot2.0/scenes/space_ship.tscn" id="5_nkrjh"]
 [ext_resource type="PackedScene" uid="uid://ch63oavybuyab" path="res://marsslingshot2.0/scenes/label.tscn" id="7_ntjii"]
-[ext_resource type="Script" path="res://marsslingshot2.0/script/color_rect.gd" id="8_o5qwo"]
 [ext_resource type="Texture2D" uid="uid://d3i5uhv7cwp4o" path="res://Globals/consoleBackgroundLarge.png" id="9_b3xa4"]
 [ext_resource type="Script" path="res://marsslingshot2.0/scripts/checkpoint2.gd" id="11_fyebo"]
 [ext_resource type="Shader" path="res://psychescan/addons/CRTVisual.gdshader" id="12_7tjrx"]
@@ -75,7 +73,6 @@ offset_left = -435.0
 offset_top = 365.0
 offset_right = 65.0
 offset_bottom = 389.0
-script = ExtResource("8_o5qwo")
 
 [node name="Label" parent="." instance=ExtResource("7_ntjii")]
 offset_left = -434.0
@@ -115,5 +112,4 @@ position = Vector2(267, 33)
 zoom = Vector2(1.5, 1.5)
 
 [connection signal="body_exited" from="gameArea" to="." method="_on_game_area_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="checkpoint/Area2D" to="checkpoint" method="_on_area_2d_body_entered"]

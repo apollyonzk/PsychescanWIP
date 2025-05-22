@@ -31,11 +31,6 @@ shader_parameter/vignette_opacity = 0.5
 [node name="level" type="Node2D"]
 scale = Vector2(1.268, 1.268)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-z_index = 102
-position = Vector2(1029.97, 630.126)
-zoom = Vector2(1.071, 1.092)
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_2j55q")]
 position = Vector2(277.603, 201.893)
 scale = Vector2(0.85, 0.856)
@@ -50,3 +45,8 @@ polygon = PackedVector2Array(150, 135, 159, 112, 183, 98, 546, 98, 570, 114, 587
 
 [node name="background" parent="." instance=ExtResource("2_38ku3")]
 scale = Vector2(1.268, 1.268)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 102
+position = Vector2(1029.97, 630.126)
+zoom = Vector2(1.071, 1.092)
